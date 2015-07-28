@@ -1,2 +1,2 @@
 # SpringBootSample
-SprintBootを試してみた
+Spring Bootを試してみた
