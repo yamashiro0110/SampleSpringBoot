@@ -1,21 +1,46 @@
 package sample.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
- * Created by yamashiro-r on 15/07/28.
+ * userテーブルのエンティティ
  */
-public class User {
-
+@Entity
+public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private String lastName;
+    private String mail;
+    private String tel;
+    private int age;
 
-    public User(String name, String lastName) {
+    public User() {}
+
+    public User(Long id, String name, String mail, String tel, int age) {
+        this.id = id;
         this.name = name;
-        this.lastName = lastName;
+        this.mail = mail;
+        this.tel = tel;
+        this.age = age;
     }
+
 
     @Override
     public String toString() {
-        return String.format("name:%s, lastName:%s", name, lastName);
+        return String.format("name:%s", name);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -26,11 +51,27 @@ public class User {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getMail() {
+        return mail;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
