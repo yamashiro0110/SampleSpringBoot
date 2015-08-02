@@ -4,11 +4,10 @@ package sample; /**
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import sample.bean.User;
 
-import static java.lang.System.out;
-
+/**
+ * アプリケーション起動クラス
+ */
 @SpringBootApplication
 public class Main {
 
@@ -16,38 +15,11 @@ public class Main {
         testMvc(args);
     }
 
-    private static void printLine() {
-        out.println("*******************");
-    }
-
+    /**
+     * MVCアプリケーションを起動する
+     * @param args
+     */
     private static void testMvc(String[] args) {
         SpringApplication.run(Main.class, args);
     }
-
-    private static void testContext(String[] args) {
-        try (ConfigurableApplicationContext context = SpringApplication.run(Main.class, args)) {
-            out.println();
-            printLine();
-            Main main = context.getBean(Main.class);
-            main.hello();
-
-            printLine();
-            User user = context.getBean(User.class);
-            out.println(user);
-
-            printLine();
-            out.println();
-        }
-    }
-
-
-    public void hello() {
-        out.println("Hello Spring Boot!!");
-    }
-
-//    @Bean
-//    public User getUser() {
-//        return new User("spring", "boot");
-//    }
-
 }
