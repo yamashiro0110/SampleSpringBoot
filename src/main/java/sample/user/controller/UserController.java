@@ -49,7 +49,6 @@ public class UserController {
     @RequestMapping(value = "/input", method = RequestMethod.POST)
     public String confirm(@Valid final User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("errors", result.getAllErrors());
             return "redirect:/user/input";
         }
 
