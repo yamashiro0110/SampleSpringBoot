@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+    <meta charset="UTF-8" />
+    <title>ユーザー情報入力</title>
+</head>
+<body>
+<h1>ユーザー情報入力</h1>
+<hr />
+
+<div th:if="${}">
+</div>
+
+<form th:object="${user}" th:attr="action=@{/user/input}" method="POST">
+<ul>
+    <li>
+        名前:&nbsp;
+        <input type="text" th:field="*{name}" th:value="*{name}" th:readonly="${readonly}" value="" />
+    </li>
+    <li>
+        メール:&nbsp;
+        <input type="text" th:field="*{mail}" th:value="*{mail}" th:readonly="${readonly}" value="" />
+    </li>
+    <li>
+        TEL:&nbsp;
+        <input type="text" th:field="*{tel}" th:value="*{tel}" th:readonly="${readonly}" value="" />
+    </li>
+    <li>
+        年齢:&nbsp;
+        <input type="text" th:field="*{age}" th:value="*{age}" th:readonly="${readonly}" value="" />
+    </li>
+</ul>
+
+<input th:unless="${isConfirm}" type="submit" value="送信" />
+</form>
+
+<form th:if="${isConfirm}" th:attr="action=@{/user/register}" method="POST">
+    <input type="submit" value="登録" />
+</form>
+
+</body>
+</html>

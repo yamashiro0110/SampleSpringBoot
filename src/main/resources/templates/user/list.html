@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+    <meta charset="UTF-8" />
+    <title>ユーザー 一覧</title>
+</head>
+<body>
+<h1>ユーザー 一覧</h1>
+<hr />
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>mail</th>
+        <th>tel</th>
+        <th>age</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.id}">id:-1</td>
+        <td th:text="${user.name}">name:No Name</td>
+        <td th:text="${user.mail}">mail:no-replay@test.co.jp</td>
+        <td th:text="${user.tel}">tel:000-000-0000</td>
+        <td th:text="${user.age}">age:1</td>
+    </tr>
+</table>
+</body>
+</html>
