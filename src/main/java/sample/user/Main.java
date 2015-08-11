@@ -1,4 +1,4 @@
-package sample; /**
+package sample.user; /**
  * Created by yamashiro-r on 15/07/28.
  */
 
