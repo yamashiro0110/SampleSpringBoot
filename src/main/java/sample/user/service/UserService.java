@@ -29,6 +29,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public boolean exist(User user) {
+        return userRepository.findByMail(user.getMail()) != null;
+    }
+
     public void update(User user) {
         userRepository.save(user);
     }
