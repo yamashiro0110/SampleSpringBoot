@@ -8,9 +8,6 @@ import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.util.List;
 
-/**
- * Created by yamashiro-r on 15/08/11.
- */
 @Service
 @Transactional
 public class UserService {
