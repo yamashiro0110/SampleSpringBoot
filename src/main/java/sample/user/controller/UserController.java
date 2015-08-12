@@ -1,11 +1,8 @@
 package sample.user.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +14,6 @@ import sample.user.service.UserService;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
-/**
- * Created by yamashiro-r on 15/08/10.
- */
 @Controller
 @RequestMapping(value = "/user")
 @SessionAttributes(value = {"user"})
@@ -30,6 +24,11 @@ public class UserController {
     @ModelAttribute("user")
     private User user() {
         return userService.prototype();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String index() {
+        return "redirect:/user/list";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -51,6 +50,12 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/form";
         }
+
+        if (userService.exist(user)) {
+            model.addAttribute("msg", "登録済みのユーザーです");
+            return "user/register";
+        }
+
         model.addAttribute("user", user);
         model.addAttribute("readonly", true);
         model.addAttribute("isConfirm", true);
@@ -58,10 +63,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") User user, SessionStatus status) {
+    public String register(@ModelAttribute("user") User user, SessionStatus status, Model model) {
         userService.register(user);
         status.setComplete();
-        return "user/registered";
+        model.addAttribute("msg", "登録完了しました！");
+        return "user/register";
     }
 
 }
