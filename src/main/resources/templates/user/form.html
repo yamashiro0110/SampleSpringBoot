@@ -9,30 +9,30 @@
 <hr />
 
 <form th:object="${user}" th:attr="action=@{/user/input}" method="POST">
-<ul>
-    <li>
-        名前:&nbsp;
-        <input type="text" th:field="*{name}" th:value="*{name}" th:readonly="${readonly}" value="" />
-        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</td>
-    </li>
-    <li>
-        メール:&nbsp;
-        <input type="text" th:field="*{mail}" th:value="*{mail}" th:readonly="${readonly}" value="" />
-        <td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">mail error</td>
-    </li>
-    <li>
-        TEL:&nbsp;
-        <input type="text" th:field="*{tel}" th:value="*{tel}" th:readonly="${readonly}" value="" />
-        <td th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">tel error</td>
-    </li>
-    <li>
-        年齢:&nbsp;
-        <input type="text" th:field="*{age}" th:value="*{age}" th:readonly="${readonly}" value="" />
-        <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age error</td>
-    </li>
-</ul>
+    <ul>
+        <li>
+            名前:&nbsp;
+            <input type="text" th:field="*{name}" th:value="*{name}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">error</p>
+        </li>
+        <li>
+            Mail:&nbsp;
+            <input type="text" th:field="*{mail}" th:value="*{mail}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">error</p>
+        </li>
+        <li>
+            TEL:&nbsp;
+            <input type="number" th:field="*{tel}" th:value="*{tel}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">error</p>
+        </li>
+        <li>
+            年齢:&nbsp;
+            <input type="text" th:field="*{age}" th:value="*{age}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">error</p>
+        </li>
+    </ul>
 
-<input th:unless="${isConfirm}" type="submit" value="送信" />
+    <input th:unless="${isConfirm}" type="submit" value="送信" />
 </form>
 
 <form th:if="${isConfirm}" th:attr="action=@{/user/register}" method="POST">

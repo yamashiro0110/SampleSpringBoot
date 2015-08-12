@@ -1,5 +1,7 @@
 package sample.user.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sample.user.domain.User;
 import sample.user.service.UserService;
 
@@ -23,7 +24,6 @@ import javax.validation.Valid;
 @RequestMapping(value = "/user")
 @SessionAttributes(value = {"user"})
 public class UserController {
-
     @Resource
     private UserService userService;
 
@@ -47,11 +47,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/input", method = RequestMethod.POST)
-    public String confirm(@Valid final User user, BindingResult result, Model model) {
+    public String confirm(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "redirect:/user/input";
+            return "user/form";
         }
-
         model.addAttribute("user", user);
         model.addAttribute("readonly", true);
         model.addAttribute("isConfirm", true);
