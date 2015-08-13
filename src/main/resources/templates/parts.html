@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>parts.html</title>
+</head>
+<body>
+
+<!--
+    header
+    "<div th:include="/parts::header"/>"で読み込む
+-->
+<div th:fragment="header">
+    <b>header</b>
+    <ul>
+        <li><a href="/user/list">user:list</a></li>
+        <li><a href="/user/input">user:input</a></li>
+    </ul>
+</div>
+
+<!--
+    footer
+    "<div th:replace="/parts::footer"/>"で読み込む
+-->
+<div th:fragment="footer" style="background:darkseagreen">
+    <b>footer</b>
+    <ul>
+        <li><a href="/user/list">user:list</a></li>
+        <li><a href="/user/input">user:input</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

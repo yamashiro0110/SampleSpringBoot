@@ -5,6 +5,10 @@
     <title>ユーザー 一覧</title>
 </head>
 <body>
+
+<div th:include="/parts::header"/>
+<hr />
+
 <h1>ユーザー 一覧</h1>
 <hr />
 <table border="1">
@@ -23,5 +27,9 @@
         <td th:text="${user.age}">age:1</td>
     </tr>
 </table>
+
+<hr />
+<div th:replace="/parts::footer"/>
+
 </body>
 </html>

@@ -5,6 +5,10 @@
     <title>ユーザー情報入力</title>
 </head>
 <body>
+
+<div th:include="/parts::header"/>
+<hr />
+
 <h1>ユーザー情報入力</h1>
 <hr />
 
@@ -38,6 +42,9 @@
 <form th:if="${isConfirm}" th:attr="action=@{/user/register}" method="POST">
     <input type="submit" value="登録" />
 </form>
+
+<hr />
+<div th:replace="/parts::footer"/>
 
 </body>
 </html>

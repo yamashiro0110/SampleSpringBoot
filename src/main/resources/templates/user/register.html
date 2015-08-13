@@ -5,10 +5,17 @@
     <title>ユーザー 登録</title>
 </head>
 <body>
+
+<div th:include="/parts::header"/>
+<hr />
+
 <h1>ユーザー 登録</h1>
 <hr />
 
 <p th:text="${msg}">登録メッセージ</p>
+
+<hr />
+<div th:replace="/parts::footer"/>
 
 </body>
 </html>
