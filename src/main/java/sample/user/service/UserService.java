@@ -22,12 +22,16 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User findBy(Long id) {
+        return userRepository.findOne(id);
+    }
+
     public void register(User user) {
         userRepository.save(user);
     }
 
     public boolean exist(User user) {
-        return userRepository.findByMail(user.getMail()) != null;
+        return userRepository.findOne(user.getId()) != null;
     }
 
     public void update(User user) {
