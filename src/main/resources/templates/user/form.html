@@ -20,11 +20,6 @@
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">error</p>
         </li>
         <li>
-            Mail:&nbsp;
-            <input type="text" th:field="*{mail}" th:value="*{mail}" th:readonly="${readonly}" value="" />
-            <p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">error</p>
-        </li>
-        <li>
             TEL:&nbsp;
             <input type="number" th:field="*{tel}" th:value="*{tel}" th:readonly="${readonly}" value="" />
             <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">error</p>
