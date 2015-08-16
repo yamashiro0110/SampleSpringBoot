@@ -10,7 +10,7 @@ import sample.user.domain.User;
 import javax.annotation.Resource;
 
 @Service
-public class UserAuthService {
+public class AuthUserService {
     @Resource
     private AuthUserRepository authUserRepository;
 

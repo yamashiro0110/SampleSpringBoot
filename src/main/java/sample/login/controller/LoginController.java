@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import sample.user.auth.service.UserAuthService;
+import sample.user.auth.service.AuthUserService;
 
 import javax.annotation.Resource;
 
@@ -12,11 +12,11 @@ import javax.annotation.Resource;
 @RequestMapping(value = "/login")
 public class LoginController {
     @Resource
-    private UserAuthService userAuthService;
+    private AuthUserService authUserService;
 
     @RequestMapping(value = "form", method = RequestMethod.GET)
     public String form(Model model) {
-        model.addAttribute("userAuth", userAuthService.prototype());
+        model.addAttribute("userAuth", authUserService.prototype());
         return "login/form";
     }
 }
