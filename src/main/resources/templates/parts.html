@@ -28,5 +28,17 @@
     </ul>
 </div>
 
+<!--
+    login user info
+ -->
+<div th:fragment="loginUser(name)">
+    <p>
+        <b>Login User</b>
+    </p>
+    <p>
+        name: <span th:text="${name}">Test User</span>
+    </p>
+</div>
+
 </body>
 </html>
