@@ -6,6 +6,9 @@
 </head>
 <body>
 
+<div th:include="/parts::loginUser(${loginUser.name})"/>
+ <hr />
+
 <div th:include="/parts::header"/>
 <hr />
 
@@ -15,14 +18,12 @@
     <tr>
         <th>id</th>
         <th>name</th>
-        <th>mail</th>
         <th>tel</th>
         <th>age</th>
     </tr>
     <tr th:each="user: ${users}">
         <td th:text="${user.id}">id:-1</td>
         <td th:text="${user.name}">name:No Name</td>
-        <td th:text="${user.mail}">mail:no-replay@test.co.jp</td>
         <td th:text="${user.tel}">tel:000-000-0000</td>
         <td th:text="${user.age}">age:1</td>
     </tr>
