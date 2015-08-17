@@ -4,6 +4,7 @@ import lombok.*;
 import sample.user.auth.domain.AuthUser;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -33,5 +34,6 @@ public class User implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
+    @Valid
     private AuthUser authUser;
 }

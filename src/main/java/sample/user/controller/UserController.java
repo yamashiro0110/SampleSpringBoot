@@ -26,7 +26,9 @@ public class UserController {
 
     @ModelAttribute("user")
     private User user() {
-        return userService.prototype();
+        User user = userService.prototype();
+        user.setAuthUser(authUserService.prototype());
+        return user;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -55,7 +57,7 @@ public class UserController {
             return "user/form";
         }
 
-        if (userService.exist(user)) {
+        if (authUserService.exist(user.getAuthUser())) {
             model.addAttribute("msg", "登録済みのユーザーです");
             return "user/register";
         }

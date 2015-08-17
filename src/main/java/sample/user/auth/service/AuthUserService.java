@@ -19,7 +19,7 @@ public class AuthUserService {
     }
 
     public boolean exist(AuthUser authUser) {
-        return authUserRepository.findByMailAndHashedPassword(authUser.getMail(), authUser.getHashedPassword()) != null;
+        return authUserRepository.findByMail(authUser.getMail()) != null;
     }
 
     public AuthUser getAuthUser() {

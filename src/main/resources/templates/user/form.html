@@ -12,7 +12,7 @@
 <h1>ユーザー情報入力</h1>
 <hr />
 
-<form th:object="${user}" th:attr="action=@{/user/input}" method="POST">
+<form th:object="${user}" th:action="@{/user/input}" method="POST">
     <ul>
         <li>
             名前:&nbsp;
@@ -28,6 +28,21 @@
             年齢:&nbsp;
             <input type="text" th:field="*{age}" th:value="*{age}" th:readonly="${readonly}" value="" />
             <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">error</p>
+        </li>
+        <li>
+            Mail:&nbsp;
+            <input type="text" th:field="*{authUser.mail}" th:value="*{authUser.mail}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('authUser.mail')}" th:errors="*{authUser.mail}">error</p>
+        </li>
+        <li th:unless="${readonly}">
+            Password:&nbsp;
+            <input type="password" th:field="*{authUser.password}" th:value="*{authUser.password}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('authUser.password')}" th:errors="*{authUser.password}">error</p>
+        </li>
+        <li th:unless="${readonly}">
+            確認用Password:&nbsp;
+            <input type="password" th:field="*{authUser.confirmPassword}" th:value="*{authUser.confirmPassword}" th:readonly="${readonly}" value="" />
+            <p th:if="${#fields.hasErrors('authUser.checkPassword')}" th:errors="*{authUser.checkPassword}">error</p>
         </li>
     </ul>
 

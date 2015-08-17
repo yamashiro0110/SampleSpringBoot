@@ -1,15 +1,15 @@
 package sample.user.auth.domain;
 
 import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.util.StringUtils;
 import sample.user.domain.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -37,15 +37,22 @@ public class AuthUser {
     @Transient
     private String password;
 
+    @NotNull
+    @Size(min = 6, max = 12)
+    @Transient
+    private String confirmPassword;
+
     private String hashedPassword;
 
     @PrePersist
     public void prePersist() {
-        if (StringUtils.isEmpty(password)) {
-            return;
-        }
+        if (StringUtils.isEmpty(password)) return;
+        hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+    }
 
-        hashedPassword = BCrypt.hashpw(password, LocalDateTime.now().toString());
+    @AssertTrue(message = "確認用パスワードが一致しません!!")
+    public boolean isCheckPassword() {
+        return StringUtils.equals(password, confirmPassword);
     }
 
 }
