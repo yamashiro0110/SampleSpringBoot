@@ -8,7 +8,7 @@
 <h1>ログイン</h1>
 <hr />
 
-<form th:attr="action=@{/login}" th:object="${userAuth}" method="POST">
+<form th:action="@{/login}" th:object="${userAuth}" method="POST">
     <div th:if="${param.error}">認証エラーです</div>
     <ul>
         <li>

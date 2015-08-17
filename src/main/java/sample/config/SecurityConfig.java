@@ -21,9 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // CSFRを無効
-        http.csrf().disable();
-
         http.authorizeRequests()
                 // '/login/form'へのリクエストは認証しない
                 .antMatchers("/login/form").permitAll()
@@ -31,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         http.formLogin()
+                // login認証実行URL(?) Spring Securityがよしなにやってくれる
                 .loginProcessingUrl("/login")
                 // login画面のURL
                 .loginPage("/login/form")
