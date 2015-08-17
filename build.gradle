@@ -33,6 +33,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-security'
     compile "org.springframework:springloaded:1.2.4.RELEASE"
 
+    compile 'org.apache.commons:commons-lang3:3.4'
     compile 'mysql:mysql-connector-java'
 
     compile 'org.projectlombok:lombok:1.+'
