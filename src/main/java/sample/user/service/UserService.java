@@ -1,5 +1,7 @@
 package sample.user.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import sample.user.domain.User;
 import sample.user.repository.UserRepository;
@@ -20,6 +22,10 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public Page<User> findAll(int page) {
+        return userRepository.findAll(new PageRequest(page, 5));
     }
 
     public User findBy(Long id) {

@@ -16,18 +16,38 @@
 <hr />
 <table border="1">
     <tr>
-        <th>id</th>
-        <th>name</th>
+        <th>ID</th>
+        <th>名前</th>
         <th>tel</th>
-        <th>age</th>
+        <th>年齢</th>
+        <th>郵便番号</th>
+        <th>都道府県</th>
+        <th>市区町村</th>
+        <th>番地</th>
+        <th>建物</th>
     </tr>
-    <tr th:each="user: ${users}">
-        <td th:text="${user.id}">id:-1</td>
-        <td th:text="${user.name}">name:No Name</td>
-        <td th:text="${user.tel}">tel:000-000-0000</td>
-        <td th:text="${user.age}">age:1</td>
+    <tr th:each="user: ${userPage.content}">
+        <td th:text="${user.id}">-1</td>
+        <td th:text="${user.name}">No Name</td>
+        <td th:text="${user.tel}">000-000-0000</td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.address.postalCode}">0000000</td>
+        <td th:text="${user.address.prefectures}">沖縄県</td>
+        <td th:text="${user.address.city}">那覇市</td>
+        <td th:text="${user.address.address}">１−２−３</td>
+        <td th:text="${user.address.address}">xxxマンション</td>
     </tr>
 </table>
+
+<hr />
+<div>
+    <span th:if="${userPage.hasPrevious()}">
+        <a th:href="@{/user/list/{page}(page=${userPage.number} - 1)}">前</a>
+    </span>
+    <span th:if="${userPage.hasNext()}">
+        <a th:href="@{/user/list/{page}(page=${userPage.number} + 1)}">次</a>
+    </span>
+</div>
 
 <hr />
 <div th:replace="/parts::footer"/>
