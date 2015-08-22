@@ -1,6 +1,7 @@
 package sample.user.domain;
 
 import lombok.*;
+import sample.user.address.domain.Address;
 import sample.user.auth.domain.AuthUser;
 
 import javax.persistence.*;
@@ -36,4 +37,9 @@ public class User implements Serializable {
     @JoinColumn(name = "id")
     @Valid
     private AuthUser authUser;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Address address;
+
 }
