@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "user")
