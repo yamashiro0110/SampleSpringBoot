@@ -37,6 +37,8 @@ dependencies {
 //    compile 'mysql:mysql-connector-java'
     compile 'com.h2database:h2'
     compile 'org.projectlombok:lombok:1.+'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 jar.baseName = 'spring-boot-sample'
