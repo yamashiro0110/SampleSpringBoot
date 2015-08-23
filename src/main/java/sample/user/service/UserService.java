@@ -1,8 +1,12 @@
 package sample.user.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
+import sample.user.address.domain.Address;
 import sample.user.domain.User;
 import sample.user.repository.UserRepository;
 
@@ -32,6 +36,10 @@ public class UserService {
         return userRepository.findOne(id);
     }
 
+    public Page<User> findByAddress(Address address) {
+        return userRepository.findAll(address(address), new PageRequest(0, 5));
+    }
+
     public void register(User user) {
         userRepository.save(user);
     }
@@ -46,6 +54,10 @@ public class UserService {
 
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    private Specification<User> address(Address address) {
+        return new UserSpecificationService(address).specification();
     }
 
 }

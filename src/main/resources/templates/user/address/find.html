@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+    <meta charset="UTF-8" />
+    <title>住所検索</title>
+</head>
+<body>
+
+<div th:include="/parts::header"/>
+<hr />
+
+<h1>住所検索</h1>
+<hr />
+
+<form th:object="${address}" th:action="@{/user/address/find}" method="POST">
+    <ul>
+        <li>
+            郵便番号:&nbsp;
+            <input type="text" th:field="*{postalCode}" th:value="*{postalCode}" value="" />
+        </li>
+        <li>
+            都道府県:&nbsp;
+            <input type="text" th:field="*{prefectures}" th:value="*{prefectures}" value="" />
+        </li>
+        <li>
+            市区町村:&nbsp;
+            <input type="text" th:field="*{city}" th:value="*{city}" value="" />
+        </li>
+        <li>
+            番地:&nbsp;
+            <input type="text" th:field="*{address}" th:value="*{address}" value="" />
+        </li>
+        <li>
+            建物:&nbsp;
+            <input type="text" th:field="*{building}" th:value="*{building}" value="" />
+        </li>
+    </ul>
+
+    <input type="submit" value="送信" />
+</form>
+
+<hr />
+<div th:replace="/parts::footer"/>
+
+</body>
+</html>
