@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sample.Main;
 import sample.user.address.domain.Address;
 import sample.user.domain.User;
-import sample.user.service.UserService;
+import sample.user.service.UserProtoTypeService;
 
 import javax.annotation.Resource;
 
@@ -18,12 +18,12 @@ import javax.annotation.Resource;
 @SpringApplicationConfiguration(classes = Main.class)
 public class UserRepositoryTest extends TestCase {
     @Resource
-    private UserService userService;
+    private UserProtoTypeService userProtoTypeService;
 
     @Test
     public void findByAddress() {
         Address address = Address.builder()
-                .id(new Long(1))
+                .id(Long.valueOf(1))
                 .postalCode("1111111")
                 .prefectures("沖縄県")
                 .city("那覇市")
@@ -31,7 +31,9 @@ public class UserRepositoryTest extends TestCase {
                 .building("ｘｘｘマンション")
                 .build();
 
-        Page<User> users = userService.findByAddress(address);
+        Boolean.valueOf(true);
+
+        Page<User> users = userProtoTypeService.findByAddress(address);
         users.forEach(user -> System.out.println("user:" + ReflectionToStringBuilder.toString(user)));
     }
 }
