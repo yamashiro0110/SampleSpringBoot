@@ -1,5 +1,6 @@
 package sample.user.address.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import sample.user.domain.User;
 
@@ -38,6 +39,7 @@ public class Address {
     @NotNull
     private String building;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "address")
     private User user;
 

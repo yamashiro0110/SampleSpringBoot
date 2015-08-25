@@ -1,5 +1,6 @@
 package sample.user.auth.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Email;
@@ -23,6 +24,7 @@ public class AuthUser {
     @GeneratedValue
     private Long id;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "authUser")
     private User user;
 
