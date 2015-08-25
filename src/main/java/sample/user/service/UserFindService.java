@@ -1,28 +1,21 @@
 package sample.user.service;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 import sample.user.address.domain.Address;
 import sample.user.domain.User;
 import sample.user.repository.UserRepository;
 
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
-public class UserService {
+public class UserFindService {
+
     @Resource
     private UserRepository userRepository;
-
-    public User prototype() {
-        return new User();
-    }
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -40,20 +33,8 @@ public class UserService {
         return userRepository.findAll(address(address), new PageRequest(0, 5));
     }
 
-    public void register(User user) {
-        userRepository.save(user);
-    }
-
-    public boolean exist(User user) {
-        return userRepository.findOne(user.getId()) != null;
-    }
-
-    public void update(User user) {
-        userRepository.save(user);
-    }
-
-    public void delete(User user) {
-        userRepository.delete(user);
+    public List<User> findByName(String name) {
+        return userRepository.findByNameStartingWith(name);
     }
 
     private Specification<User> address(Address address) {
