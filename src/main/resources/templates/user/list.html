@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<div th:include="/parts::loginUser(${loginUser.name})"/>
- <hr />
+<div th:include="parts::loginUser(${loginUser.name})"/>
+<hr />
 
-<div th:include="/parts::header"/>
+<div th:include="parts::header"/>
 <hr />
 
 <h1>ユーザー 一覧</h1>
@@ -50,7 +50,7 @@
 </div>
 
 <hr />
-<div th:replace="/parts::footer"/>
+<div th:replace="parts::footer"/>
 
 </body>
 </html>
