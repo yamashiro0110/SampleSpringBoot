@@ -1,5 +1,5 @@
-INSERT INTO
-    user (name, tel, age)
+INSERT INTO user
+    (name, tel, age)
 VALUES
     ('yamashiro', '000-111-1111', 18),
     ('miyamoto', '000-111-1112', 19),
@@ -16,8 +16,8 @@ VALUES
     ('jjj', '000-111-1123', 21)
 ;
 
-INSERT INTO
-    auth_user (mail, hashed_password)
+INSERT INTO auth_user
+    (mail, hashed_password)
 VALUES
     ('yamashiro@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.'),
     ('test1@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.'),
@@ -34,8 +34,8 @@ VALUES
     ('test12@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.')
 ;
 
-INSERT INTO
-    address (postal_code, prefectures, city, address, building)
+INSERT INTO address
+    (postal_code, prefectures, city, address, building)
 VALUES
     ('1111111', '沖縄県', '那覇市', 'おもろまち１−２−３', 'ｘｘｘマンション'),
     ('1111112', '東京都', '中央区', '日本橋１−２−３', 'ｘｘｘビル'),
