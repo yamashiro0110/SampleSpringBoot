@@ -9,12 +9,12 @@ import sample.service.user.auth.AuthUserService;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping(value = "/login")
+@RequestMapping(value = "/login/form")
 public class LoginController {
     @Resource
     private AuthUserService authUserService;
 
-    @RequestMapping(value = "form", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String form(Model model) {
         model.addAttribute("userAuth", authUserService.prototype());
         return "login/form";

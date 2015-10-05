@@ -2,7 +2,7 @@ buildscript {
     repositories { mavenCentral() }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
-        classpath "org.springframework:springloaded:1.2.4.RELEASE"
+//        classpath "org.springframework:springloaded:1.2.4.RELEASE"
     }
 }
 
@@ -15,12 +15,12 @@ group = 'springbootsample'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-idea {
-    module {
-        inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/main/")
-    }
-}
+//idea {
+//    module {
+//        inheritOutputDirs = false
+//        outputDir = file("$buildDir/classes/main/")
+//    }
+//}
 
 repositories {
     mavenCentral()

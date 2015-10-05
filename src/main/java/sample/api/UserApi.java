@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import sample.domain.user.User;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/user/{userId}")
 public class UserApi {
-//    @Resource
-//    private UserRepository userRepository;
-
-    @RequestMapping(value = "{userId}", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public User user(@PathVariable("userId") User user) {
         return user;
     }
-
 }
