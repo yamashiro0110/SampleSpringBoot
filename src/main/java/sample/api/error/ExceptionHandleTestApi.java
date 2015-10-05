@@ -17,7 +17,7 @@ public class ExceptionHandleTestApi {
 
     @RequestMapping(method = RequestMethod.GET)
     public Map<String, Object> occurredUncheckdIOException() {
-        throw new UncheckedIOException("test", new IOException("test exception handling"));
+        throw new UncheckedIOException("test", new IOException("test exception handling-1"));
     }
 
     @ExceptionHandler({UncheckedIOException.class})

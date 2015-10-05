@@ -1,11 +1,11 @@
 package sample.api.error;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -19,4 +19,14 @@ public class ExceptionUnHandleTestApi {
     public Map<String, Object> occurredUncheckdIOException() {
         throw new UncheckedIOException("test", new IOException("ハンドリングされないexception"));
     }
+
+    @ExceptionHandler({UncheckedIOException.class})
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public Map<String, Object> error() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        map.put("msg", "occurred UncheckedIOException ExceptionUnHandleTestApi");
+        return map;
+    }
+
 }

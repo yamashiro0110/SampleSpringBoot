@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>画像</title>
+</head>
+<body>
+<h1>画像</h1>
+<hr/>
+
+<p>表示用</p>
+<img th:src="@{/test/image/test.jpg}"/>
+
+<p>ダウンロード用</p>
+<a th:href="@{/test/image/test.jpg}" download="test.jpg">ダウンロード</a>
+
+</body>
+</html>
