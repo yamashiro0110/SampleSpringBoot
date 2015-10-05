@@ -63,15 +63,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // ログアウト成功時に遷移するURL
                 .logoutSuccessUrl("/login/form");
 
-        http.addFilterAfter(
-                new CustomFilter(new AntPathRequestMatcher("/api/**"), authKey),
-                AbstractAuthenticationProcessingFilter.class);
+//        http.addFilterAfter(
+//                new CustomFilter(new AntPathRequestMatcher("/api/**"), authKey),
+//                AbstractAuthenticationProcessingFilter.class);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         // 引数に指定したURLのパターンに一致するリクエストは認証しない
         web.ignoring().antMatchers(
+                "/api/**",
                 "/css/**",
                 "/js/**",
                 "/img/**");

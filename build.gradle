@@ -26,19 +26,19 @@ repositories {
     mavenCentral()
 }
 
+
+jar.baseName = 'spring-boot-sample'
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-security'
-    compile "org.springframework:springloaded:1.2.4.RELEASE"
     compile 'org.apache.commons:commons-lang3:3.4'
-//    compile 'mysql:mysql-connector-java'
     compile 'com.h2database:h2'
     compile 'org.projectlombok:lombok:1.+'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.6.1'
+//    compile 'mysql:mysql-connector-java'
+//    compile "org.springframework:springloaded:1.2.4.RELEASE"
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
-
-jar.baseName = 'spring-boot-sample'
