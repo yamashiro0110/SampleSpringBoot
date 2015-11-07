@@ -26,7 +26,6 @@ repositories {
     mavenCentral()
 }
 
-
 jar.baseName = 'spring-boot-sample'
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
@@ -41,4 +40,8 @@ dependencies {
 //    compile "org.springframework:springloaded:1.2.4.RELEASE"
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
 }

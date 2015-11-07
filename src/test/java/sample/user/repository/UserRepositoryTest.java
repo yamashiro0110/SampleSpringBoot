@@ -1,6 +1,5 @@
 package sample.user.repository;
 
-import junit.framework.TestCase;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,15 +7,15 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sample.Main;
-import sample.domain.user.address.Address;
 import sample.domain.user.User;
+import sample.domain.user.address.Address;
 import sample.service.user.UserFindService;
 
 import javax.annotation.Resource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Main.class)
-public class UserRepositoryTest extends TestCase {
+public class UserRepositoryTest {
 
     @Resource
     private UserFindService userFindService;
