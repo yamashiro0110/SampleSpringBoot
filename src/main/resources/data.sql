@@ -19,7 +19,6 @@ VALUES
 INSERT INTO auth_user
     (mail, hashed_password)
 VALUES
-    ('yamashiro@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.'),
     ('test1@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.'),
     ('test2@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.'),
     ('test3@spring.io', '$2a$04$wtheo17dIX8jEEQ2eHtz7Oxz89IbIMaThjGIEva/jbQcoSX1Dxys.'),
