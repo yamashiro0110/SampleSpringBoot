@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sample.Main;
+import sample.domain.user.User;
 
 import javax.annotation.Resource;
 
@@ -17,7 +18,16 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-    public void testFindByNameStartingWith() throws Exception {
+    public void testFindByNameStartingWith() {
         Assert.assertNotNull(userRepository.findOne(1L));
+    }
+
+    @Test
+    public void testDelete() {
+        User user = userRepository.findOne(Long.valueOf(1));
+        Assert.assertNotNull(user);
+
+        userRepository.delete(user);
+        Assert.assertNull(userRepository.findOne(Long.valueOf(1)));
     }
 }
