@@ -44,6 +44,11 @@
             <input type="password" th:field="*{authUser.confirmPassword}" th:value="*{authUser.confirmPassword}" th:readonly="${readonly}" value="" />
             <p th:if="${#fields.hasErrors('authUser.checkPassword')}" th:errors="*{authUser.checkPassword}">error</p>
         </li>
+        <li th:unless="${readonly}">
+            日付:&nbsp;
+            <input type="date" />
+            <!--<p th:if="${#fields.hasErrors('authUser.checkPassword')}" th:errors="*{authUser.checkPassword}">error</p>-->
+        </li>
     </ul>
 
     <input th:unless="${isConfirm}" type="submit" value="送信" />

@@ -37,11 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 // '/login/form'へのリクエストは認証しない
-                .antMatchers("/login/form", "/api/user/**")
-                .permitAll()
+                .antMatchers("/login/form", "/api/user/**").permitAll()
                 // それ以外のアクセスは認証が必要とする
-                .anyRequest()
-                .authenticated();
+                .anyRequest().authenticated();
 
         http.formLogin()
                 // login認証実行URL(?) Spring Securityがよしなにやってくれる

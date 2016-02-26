@@ -50,3 +50,10 @@ VALUES
     ('1111122', '沖縄', '那覇市', '久茂地１−２−３', 'ｘｘｘアパート'),
     ('1111123', '沖縄', '那覇市', '久茂地１−２−３', 'ｘｘｘアパート')
 ;
+
+INSERT INTO test_domain (id, value, test_enum) VALUES
+(1, 'hoge', 0),
+(2, 'fuga', 1);
+--INSERT INTO test_domain (id, value) VALUES
+--(1, 'hoge'),
+--(2, 'fuga');
