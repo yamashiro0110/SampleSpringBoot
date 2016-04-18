@@ -1,4 +1,4 @@
-package sample.domain.test;
+package sample.boot.domain.test;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

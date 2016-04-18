@@ -1,4 +1,4 @@
-package sample.domain.test;
+package sample.boot.domain.test;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
