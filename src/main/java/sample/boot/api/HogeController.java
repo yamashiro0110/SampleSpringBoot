@@ -1,5 +1,6 @@
 package sample.boot.api;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,34 @@ public class HogeController {
         return new HogeFugaList();
     }
 
+    @RequestMapping(value = "hogefuga/root", method = GET)
+    public HogeRoot hogeRoot() {
+        return new HogeRoot();
+    }
+
+    @Data
+    public static class HogeRoot {
+        @JsonProperty("resultData")
+        private HogeFuga resultData = new HogeFuga();
+    }
+
+    @Data
+    public static class HogeFuga {
+        @JsonProperty("name")
+        private String name = "hogefuga";
+        @JsonProperty("hoge")
+        private Hoge hoge = new Hoge();
+        @JsonProperty("fuga")
+        private Fuga fuga = new Fuga();
+    }
+
+    @Data
+    public static class HogeFugaList {
+        private String name = "";
+        private List<String> hoge = Collections.emptyList();
+        private Fuga fuga = new Fuga();
+    }
+
     @Data
     public static class Hoge {
         private String name = "hoge";
@@ -52,18 +81,5 @@ public class HogeController {
         }
     }
 
-    @Data
-    public static class HogeFuga {
-        private String name = "hogefuga";
-        private Hoge hoge = new Hoge();
-        private Fuga fuga = new Fuga();
-    }
-
-    @Data
-    public static class HogeFugaList {
-        private String name = "";
-        private List<String> hoge = Collections.emptyList();
-        private Fuga fuga = new Fuga();
-    }
 
 }

@@ -1,7 +1,6 @@
 package sample.boot.api.serialize;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -15,7 +14,7 @@ import java.time.LocalDate;
  */
 public class LocalDateDeserializer extends JsonDeserializer<LocalDate> {
     @Override
-    public LocalDate deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public LocalDate deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         ObjectCodec objectCodec = jp.getCodec();
         TextNode node = objectCodec.readTree(jp);
         String date = node.textValue();
