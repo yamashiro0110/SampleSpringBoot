@@ -1,8 +1,8 @@
 package sample.boot.service.user;
 
 import org.springframework.stereotype.Service;
-import sample.boot.domain.user.User;
-import sample.boot.repository.user.UserRepository;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.UserRepository;
 
 import javax.annotation.Resource;
 
@@ -12,8 +12,8 @@ public class UserDeleteService {
     @Resource
     private UserRepository userRepository;
 
-    public void delete(User user) {
-        userRepository.delete(user);
+    public void delete(final User user) {
+        this.userRepository.delete(user);
     }
 
 }

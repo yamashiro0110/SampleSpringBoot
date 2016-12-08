@@ -3,10 +3,10 @@ package sample.boot.service.user;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
-import sample.boot.repository.user.UserSummaryRepository;
-import sample.boot.domain.user.auth.AuthUser;
-import sample.boot.domain.user.User;
-import sample.boot.domain.user.UserSummary;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.UserSummary;
+import sample.boot.domain.model.user.UserSummaryRepository;
+import sample.boot.domain.model.user.auth.AuthUser;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.Root;
@@ -19,13 +19,13 @@ public class UserSummaryService {
     private UserSummaryRepository userSummaryRepository;
 
     public List<UserSummary> findAll() {
-        return userSummaryRepository.findAll(Specifications.where(specification()));
+        return this.userSummaryRepository.findAll(Specifications.where(specification()));
     }
 
     private Specification<UserSummary> specification() {
         return ((root, query, cb) -> {
-            Root<User> userRoot = query.from(User.class);
-            Root<AuthUser> authUserRoot = query.from(AuthUser.class);
+            final Root<User> userRoot = query.from(User.class);
+            final Root<AuthUser> authUserRoot = query.from(AuthUser.class);
 
             query.multiselect(
                     userRoot.get("name"),

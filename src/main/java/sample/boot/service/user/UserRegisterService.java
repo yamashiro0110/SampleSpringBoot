@@ -1,8 +1,8 @@
 package sample.boot.service.user;
 
 import org.springframework.stereotype.Service;
-import sample.boot.repository.user.UserRepository;
-import sample.boot.domain.user.User;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.UserRepository;
 
 import javax.annotation.Resource;
 
@@ -11,8 +11,8 @@ public class UserRegisterService {
     @Resource
     private UserRepository userRepository;
 
-    public void register(User user) {
-        userRepository.save(user);
+    public void register(final User user) {
+        this.userRepository.save(user);
     }
 
 }

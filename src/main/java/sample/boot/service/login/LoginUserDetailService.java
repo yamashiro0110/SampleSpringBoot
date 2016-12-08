@@ -4,9 +4,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import sample.boot.domain.login.LoginUserDetail;
-import sample.boot.domain.user.auth.AuthUser;
-import sample.boot.repository.user.auth.AuthUserRepository;
+import sample.boot.domain.model.login.LoginUserDetail;
+import sample.boot.domain.model.user.auth.AuthUser;
+import sample.boot.domain.model.user.auth.AuthUserRepository;
 
 import javax.annotation.Resource;
 
@@ -17,8 +17,8 @@ public class LoginUserDetailService implements UserDetailsService {
     private AuthUserRepository authUserRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AuthUser authUser = authUserRepository.findByMail(username);
+    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+        final AuthUser authUser = this.authUserRepository.findByMail(username);
 
         if (authUser == null) {
             throw new UsernameNotFoundException("存在しないUserです");

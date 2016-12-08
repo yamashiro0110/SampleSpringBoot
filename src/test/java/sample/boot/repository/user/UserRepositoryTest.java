@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sample.boot.Main;
-import sample.boot.domain.user.User;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.UserRepository;
 
 import javax.annotation.Resource;
 
@@ -19,15 +20,15 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByNameStartingWith() {
-        Assert.assertNotNull(userRepository.findOne(1L));
+        Assert.assertNotNull(this.userRepository.findOne(1L));
     }
 
     @Test
     public void testDelete() {
-        User user = userRepository.findOne(Long.valueOf(1));
+        final User user = this.userRepository.findOne(Long.valueOf(1));
         Assert.assertNotNull(user);
 
-        userRepository.delete(user);
-        Assert.assertNull(userRepository.findOne(Long.valueOf(1)));
+        this.userRepository.delete(user);
+        Assert.assertNull(this.userRepository.findOne(Long.valueOf(1)));
     }
 }

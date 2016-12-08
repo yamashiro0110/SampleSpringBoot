@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import sample.boot.service.user.auth.AuthUserService;
-import sample.boot.domain.user.User;
-import sample.boot.service.user.UserRegisterService;
+import sample.boot.domain.model.user.User;
 import sample.boot.service.user.UserProtoTypeService;
+import sample.boot.service.user.UserRegisterService;
+import sample.boot.service.user.auth.AuthUserService;
 
 import javax.annotation.Resource;
 
@@ -31,7 +31,7 @@ public class UserRegisterController {
     private AuthUserService authUserService;
 
     @RequestMapping(value = "input", method = RequestMethod.GET)
-    public String form(@ModelAttribute("user") final User user, Model model) {
+    public String form(@ModelAttribute("user") final User user, final Model model) {
         model.addAttribute("user", user);
         model.addAttribute("readonly", false);
         model.addAttribute("isConfirm", false);
@@ -39,12 +39,12 @@ public class UserRegisterController {
     }
 
     @RequestMapping(value = "input", method = RequestMethod.POST)
-    public String confirm(@Validated User user, BindingResult result, Model model) {
+    public String confirm(@Validated final User user, final BindingResult result, final Model model) {
         if (result.hasErrors()) {
             return "user/form";
         }
 
-        if (authUserService.exist(user.getAuthUser())) {
+        if (this.authUserService.exist(user.getAuthUser())) {
             model.addAttribute("msg", "登録済みのユーザーです");
             return "user/register";
         }
@@ -56,8 +56,8 @@ public class UserRegisterController {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") User user, SessionStatus status, Model model) {
-        userRegisterService.register(user);
+    public String register(@ModelAttribute("user") final User user, final SessionStatus status, final Model model) {
+        this.userRegisterService.register(user);
         status.setComplete();
         model.addAttribute("msg", "登録完了しました！");
         return "user/register";

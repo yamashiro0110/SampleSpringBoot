@@ -2,10 +2,10 @@ package sample.boot.service.user.auth;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import sample.boot.domain.login.LoginUserDetail;
-import sample.boot.domain.user.auth.AuthUser;
-import sample.boot.repository.user.auth.AuthUserRepository;
-import sample.boot.domain.user.User;
+import sample.boot.domain.model.login.LoginUserDetail;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.auth.AuthUser;
+import sample.boot.domain.model.user.auth.AuthUserRepository;
 
 import javax.annotation.Resource;
 
@@ -18,8 +18,8 @@ public class AuthUserService {
         return new AuthUser();
     }
 
-    public boolean exist(AuthUser authUser) {
-        return authUserRepository.findByMail(authUser.getMail()) != null;
+    public boolean exist(final AuthUser authUser) {
+        return this.authUserRepository.findByMail(authUser.getMail()) != null;
     }
 
     public AuthUser getAuthUser() {

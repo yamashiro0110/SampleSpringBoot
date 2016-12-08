@@ -7,9 +7,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sample.boot.Main;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.address.Address;
 import sample.boot.service.user.UserFindService;
-import sample.boot.domain.user.User;
-import sample.boot.domain.user.address.Address;
 
 import javax.annotation.Resource;
 
@@ -22,7 +22,7 @@ public class UserRepositoryTest {
 
     @Test
     public void findByAddress() {
-        Address address = Address.builder()
+        final Address address = Address.builder()
                 .id(Long.valueOf(1))
                 .postalCode("1111111")
                 .prefectures("沖縄県")
@@ -33,7 +33,7 @@ public class UserRepositoryTest {
 
         Boolean.valueOf(true);
 
-        Page<User> users = userFindService.findByAddress(address);
+        final Page<User> users = this.userFindService.findByAddress(address);
         users.forEach(user -> System.out.println("user:" + ReflectionToStringBuilder.toString(user)));
     }
 }

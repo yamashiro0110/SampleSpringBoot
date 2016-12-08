@@ -13,8 +13,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import sample.boot.Main;
-import sample.boot.domain.user.User;
-import sample.boot.repository.user.UserRepository;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.UserRepository;
 
 import javax.annotation.Resource;
 
@@ -35,16 +35,16 @@ public class UserFindApiTest {
 
     @Before
     public void setup() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 
     @Test
     public void testUser() throws Exception {
-        User user = userRepository.findOne(1L);
+        final User user = this.userRepository.findOne(1L);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/find/{id}", Long.valueOf(1)))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/user/find/{id}", Long.valueOf(1)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(content().string(objectMapper.writeValueAsString(user)));
+                .andExpect(content().string(this.objectMapper.writeValueAsString(user)));
     }
 }

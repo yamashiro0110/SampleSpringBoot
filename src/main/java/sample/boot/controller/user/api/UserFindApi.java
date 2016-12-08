@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import sample.boot.domain.user.User;
+import sample.boot.domain.model.user.User;
 import sample.boot.service.user.UserFindService;
 
 import javax.annotation.Resource;
@@ -22,8 +22,8 @@ public class UserFindApi {
     private UserFindService userFindService;
 
     @RequestMapping(method = RequestMethod.GET, params = {"name"})
-    public List<UserSelect2Dto> findBy(String name) {
-        final List<User> users = userFindService.findByName(name);
+    public List<UserSelect2Dto> findBy(final String name) {
+        final List<User> users = this.userFindService.findByName(name);
         final List<UserSelect2Dto> userSelect2Dtos = new ArrayList<>();
         users.forEach(user1 -> userSelect2Dtos.add(
                 UserSelect2Dto.builder()
@@ -33,7 +33,7 @@ public class UserFindApi {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public User user(@PathVariable("id") User user) {
+    public User user(@PathVariable("id") final User user) {
         return user;
     }
 

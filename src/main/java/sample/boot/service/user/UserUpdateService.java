@@ -1,8 +1,8 @@
 package sample.boot.service.user;
 
 import org.springframework.stereotype.Service;
-import sample.boot.domain.user.User;
-import sample.boot.repository.user.UserRepository;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.UserRepository;
 
 import javax.annotation.Resource;
 
@@ -11,8 +11,8 @@ public class UserUpdateService {
     @Resource
     private UserRepository userRepository;
 
-    public void update(User user) {
-        userRepository.save(user);
+    public void update(final User user) {
+        this.userRepository.save(user);
     }
 
 }

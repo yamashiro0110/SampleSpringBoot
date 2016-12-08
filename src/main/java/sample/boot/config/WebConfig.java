@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import sample.boot.exception.TestErrorHandleException;
+import sample.boot.exception.ErrorHandleException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,16 +15,16 @@ public class WebConfig {
 
     //    @Bean
     public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean bean = new FilterRegistrationBean();
+        final FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.addUrlPatterns("/api/hoge");
 //        bean.setFilter(new TestFilter());
         return bean;
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @ExceptionHandler(TestErrorHandleException.class)
+    @ExceptionHandler(ErrorHandleException.class)
     public Map<String, String> handleError() {
-        Map<String, String> result = new HashMap<>();
+        final Map<String, String> result = new HashMap<>();
         result.put("status", "error");
         result.put("message", "error handle");
         return result;

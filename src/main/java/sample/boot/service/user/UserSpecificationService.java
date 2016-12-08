@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
-import sample.boot.domain.user.address.Address;
-import sample.boot.domain.user.User;
+import sample.boot.domain.model.user.User;
+import sample.boot.domain.model.user.address.Address;
 
 @AllArgsConstructor
 public class UserSpecificationService {
@@ -13,7 +13,7 @@ public class UserSpecificationService {
     private Address address;
 
     public Specification<User> specification() {
-        if (address == null) return null;
+        if (this.address == null) return null;
         return Specifications
                 .where(postalCode())
                 .and(prefectures())

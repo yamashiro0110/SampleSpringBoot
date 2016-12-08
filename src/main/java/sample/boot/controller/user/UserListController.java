@@ -4,10 +4,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sample.boot.domain.user.User;
+import sample.boot.domain.model.user.User;
 import sample.boot.service.user.UserFindService;
-import sample.boot.service.user.auth.AuthUserService;
 import sample.boot.service.user.UserProtoTypeService;
+import sample.boot.service.user.auth.AuthUserService;
 
 import javax.annotation.Resource;
 
@@ -26,8 +26,8 @@ public class UserListController {
 
     @ModelAttribute("user")
     private User user() {
-        User user = userProtoTypeService.prototype();
-        user.setAuthUser(authUserService.prototype());
+        final User user = this.userProtoTypeService.prototype();
+        user.setAuthUser(this.authUserService.prototype());
         return user;
     }
 
@@ -37,17 +37,17 @@ public class UserListController {
     }
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String list(Model model) {
-        Page<User> userPage = userFindService.findAll(0);
-        model.addAttribute("loginUser", authUserService.getUser());
+    public String list(final Model model) {
+        final Page<User> userPage = this.userFindService.findAll(0);
+        model.addAttribute("loginUser", this.authUserService.getUser());
         model.addAttribute("userPage", userPage);
         return "user/list";
     }
 
     @RequestMapping(value = "list/{page}", method = RequestMethod.GET)
-    public String list(@PathVariable(value = "page") int page, Model model) {
-        Page<User> userPage = userFindService.findAll(page);
-        model.addAttribute("loginUser", authUserService.getUser());
+    public String list(@PathVariable(value = "page") final int page, final Model model) {
+        final Page<User> userPage = this.userFindService.findAll(page);
+        model.addAttribute("loginUser", this.authUserService.getUser());
         model.addAttribute("userPage", userPage);
         return "user/list";
     }
