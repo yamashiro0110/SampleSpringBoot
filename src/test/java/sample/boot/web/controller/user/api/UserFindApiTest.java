@@ -1,4 +1,4 @@
-package sample.boot.controller.user.api;
+package sample.boot.web.controller.user.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;

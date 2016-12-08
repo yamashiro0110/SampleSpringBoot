@@ -1,4 +1,4 @@
-package sample.boot.domain.model.user.address;
+package sample.boot.domain.model.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

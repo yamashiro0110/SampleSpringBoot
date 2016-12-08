@@ -1,12 +1,12 @@
-package sample.boot.controller.user.address;
+package sample.boot.web.controller.user.address;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import sample.boot.domain.model.address.Address;
 import sample.boot.domain.model.user.User;
-import sample.boot.domain.model.user.address.Address;
 import sample.boot.service.user.UserFindService;
 import sample.boot.service.user.auth.AuthUserService;
 

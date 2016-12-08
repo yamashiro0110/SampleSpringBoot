@@ -1,4 +1,4 @@
-package sample.boot.controller.login;
+package sample.boot.web.controller.login;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +15,8 @@ public class LoginController {
     private AuthUserService authUserService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String form(Model model) {
-        model.addAttribute("userAuth", authUserService.prototype());
+    public String form(final Model model) {
+        model.addAttribute("userAuth", this.authUserService.prototype());
         return "login/form";
     }
 }

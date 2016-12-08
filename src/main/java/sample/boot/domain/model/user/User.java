@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sample.boot.domain.model.user.address.Address;
+import sample.boot.domain.model.address.Address;
 import sample.boot.domain.model.user.auth.AuthUser;
 
 import javax.persistence.*;

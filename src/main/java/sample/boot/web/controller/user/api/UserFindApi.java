@@ -1,4 +1,4 @@
-package sample.boot.controller.user.api;
+package sample.boot.web.controller.user.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,8 @@ import sample.boot.domain.model.user.User;
 import sample.boot.service.user.UserFindService;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user/find")
@@ -22,14 +22,10 @@ public class UserFindApi {
     private UserFindService userFindService;
 
     @RequestMapping(method = RequestMethod.GET, params = {"name"})
-    public List<UserSelect2Dto> findBy(final String name) {
-        final List<User> users = this.userFindService.findByName(name);
-        final List<UserSelect2Dto> userSelect2Dtos = new ArrayList<>();
-        users.forEach(user1 -> userSelect2Dtos.add(
-                UserSelect2Dto.builder()
-                        .id(user1.getId())
-                        .text(user1.getName()).build()));
-        return userSelect2Dtos;
+    public List<SelectUserResult> findBy(final String name) {
+        return this.userFindService.findByName(name).stream()
+                .map(SelectUserResult::new)
+                .collect(Collectors.toList());
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
@@ -40,9 +36,14 @@ public class UserFindApi {
     @AllArgsConstructor
     @Data
     @Builder
-    private static class UserSelect2Dto {
-        Long id;
-        String text;
+    private static class SelectUserResult {
+        private Long id;
+        private String text;
+
+        SelectUserResult(final User user) {
+            this.id = user.getId();
+            this.text = user.getName();
+        }
     }
 
 }

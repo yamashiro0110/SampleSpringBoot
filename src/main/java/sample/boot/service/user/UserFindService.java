@@ -4,18 +4,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import sample.boot.domain.model.address.Address;
 import sample.boot.domain.model.user.User;
 import sample.boot.domain.model.user.UserRepository;
-import sample.boot.domain.model.user.address.Address;
+import sample.boot.domain.model.user.spec.UserSpecificationFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class UserFindService {
-
     @Resource
     private UserRepository userRepository;
+    @Resource
+    private UserSpecificationFactory userSpecificationService;
 
     public List<User> findAll() {
         return this.userRepository.findAll();
@@ -38,7 +40,7 @@ public class UserFindService {
     }
 
     private Specification<User> address(final Address address) {
-        return new UserSpecificationService(address).specification();
+        return this.userSpecificationService.create(address);
     }
 
 }

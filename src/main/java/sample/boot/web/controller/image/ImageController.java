@@ -1,4 +1,4 @@
-package sample.boot.controller.image;
+package sample.boot.web.controller.image;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -15,7 +15,7 @@ public class ImageController {
     @RequestMapping(value = "test.jpg", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public Resource jpg() {
 //        Resource resource = new FileSystemResource("/Users/YamashiroRyota/workspace/tmp/img/seesar.jpg");
-        Resource resource = null;
+        final Resource resource = null;
         return resource;
     }
 

@@ -16,6 +16,7 @@ VALUES
     ('jjj', '000-111-1123', 21)
 ;
 
+-- pw: testtest
 INSERT INTO auth_user
     (mail, hashed_password)
 VALUES

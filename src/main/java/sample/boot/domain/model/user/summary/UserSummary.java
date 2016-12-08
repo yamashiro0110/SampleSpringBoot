@@ -1,4 +1,4 @@
-package sample.boot.domain.model.user;
+package sample.boot.domain.model.user.summary;
 
 import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
