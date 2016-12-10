@@ -1,6 +1,4 @@
-# SpringBootSample
-
-Spring Bootを試してみた
+# Sample SpringBoot
 
 *****
 
