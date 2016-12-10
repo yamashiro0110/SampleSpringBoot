@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.User;
 import sample.boot.domain.model.user.auth.AuthUser;
 
 @Getter
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class LoginUserDetail extends User {
     private final AuthUser authUser;
     private final sample.boot.domain.model.user.User user;
