@@ -40,9 +40,9 @@ public class UserFindApiTest {
 
     @Test
     public void testUser() throws Exception {
-        final User user = this.userRepository.findOne(1L);
+        final User user = this.userRepository.findById(1L);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/user/find/{id}", Long.valueOf(1)))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/user/find/{id}", 1L))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(content().string(this.objectMapper.writeValueAsString(user)));

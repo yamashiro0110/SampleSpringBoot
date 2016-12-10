@@ -2,6 +2,7 @@ package sample.boot.domain.model.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 import sample.boot.domain.model.user.User;
 
 import javax.persistence.*;
@@ -42,5 +43,25 @@ public class Address {
     @JsonIgnore
     @OneToOne(mappedBy = "address")
     private User user;
+
+    public boolean hasPostalCode() {
+        return StringUtils.isNotEmpty(this.postalCode);
+    }
+
+    public boolean hasPrefectures() {
+        return StringUtils.isNotEmpty(this.prefectures);
+    }
+
+    public boolean hasCity() {
+        return StringUtils.isNotEmpty(this.city);
+    }
+
+    public boolean hasAddress() {
+        return StringUtils.isNotEmpty(this.address);
+    }
+
+    public boolean hasBuilding() {
+        return StringUtils.isNotEmpty(this.building);
+    }
 
 }

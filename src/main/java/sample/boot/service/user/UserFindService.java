@@ -2,12 +2,10 @@ package sample.boot.service.user;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import sample.boot.domain.model.address.Address;
 import sample.boot.domain.model.user.User;
 import sample.boot.domain.model.user.UserRepository;
-import sample.boot.domain.model.user.spec.UserSpecificationFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,31 +14,28 @@ import java.util.List;
 public class UserFindService {
     @Resource
     private UserRepository userRepository;
-    @Resource
-    private UserSpecificationFactory userSpecificationService;
 
     public List<User> findAll() {
         return this.userRepository.findAll();
     }
 
     public Page<User> findAll(final int page) {
-        return this.userRepository.findAll(new PageRequest(page, 5));
+        return this.findAll(new PageRequest(page, 5));
     }
 
-    public User findBy(final Long id) {
-        return this.userRepository.findOne(id);
+    public Page<User> findAll(final PageRequest pageRequest) {
+        return this.userRepository.findAll(pageRequest);
     }
 
-    public Page<User> findByAddress(final Address address) {
-        return this.userRepository.findAll(address(address), new PageRequest(0, 5));
+    public User findById(final Long id) {
+        return this.userRepository.findById(id);
+    }
+
+    public List<User> findByAddress(final Address address) {
+        return this.userRepository.findByAddress(address);
     }
 
     public List<User> findByName(final String name) {
-        return this.userRepository.findByNameStartingWith(name);
+        return this.userRepository.findByName(name);
     }
-
-    private Specification<User> address(final Address address) {
-        return this.userSpecificationService.create(address);
-    }
-
 }

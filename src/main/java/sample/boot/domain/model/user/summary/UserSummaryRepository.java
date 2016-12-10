@@ -1,9 +1,18 @@
 package sample.boot.domain.model.user.summary;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
+import sample.boot.infrastructure.user.summary.UserSummaryJpaMapper;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @Repository
-public interface UserSummaryRepository extends JpaRepository<UserSummary, Long>, JpaSpecificationExecutor<UserSummary> {
+public class UserSummaryRepository {
+    @Resource
+    private UserSummaryJpaMapper userSummaryJpaMapper;
+
+    public List<UserSummary> findAll() {
+        return this.userSummaryJpaMapper.findAll();
+    }
+
 }

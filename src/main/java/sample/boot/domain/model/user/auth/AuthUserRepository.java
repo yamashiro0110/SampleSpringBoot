@@ -1,11 +1,20 @@
 package sample.boot.domain.model.user.auth;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import sample.boot.infrastructure.user.auth.AuthUserJpaMapper;
+
+import javax.annotation.Resource;
 
 @Repository
-public interface AuthUserRepository extends JpaRepository<AuthUser, Long> {
-    AuthUser findByMail(String mail);
+public class AuthUserRepository {
+    @Resource
+    private AuthUserJpaMapper authUserJpaMapper;
 
-    AuthUser findByMailAndHashedPassword(String mail, String hashedPassword);
+    public AuthUser findByMail(final String mail) {
+        return this.authUserJpaMapper.findByMail(mail);
+    }
+
+    public AuthUser findByMailAndHashedPassword(final String mail, final String hashedPassword) {
+        return this.authUserJpaMapper.findByMailAndHashedPassword(mail, hashedPassword);
+    }
 }
