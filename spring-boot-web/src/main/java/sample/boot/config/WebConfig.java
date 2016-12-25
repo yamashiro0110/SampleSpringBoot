@@ -13,11 +13,9 @@ import java.util.Map;
 @ControllerAdvice
 public class WebConfig {
 
-    //    @Bean
     public FilterRegistrationBean filterRegistrationBean() {
         final FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.addUrlPatterns("/api/hoge");
-//        bean.setFilter(new TestFilter());
         return bean;
     }
 
@@ -29,13 +27,5 @@ public class WebConfig {
         result.put("message", "error handle");
         return result;
     }
-
-//    private class TestFilter extends BasicAuthenticationFilter {
-//
-//        @Override
-//        public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-////            throw new TestErrorHandleException("exception from test filter");
-//        }
-//    }
 
 }
