@@ -28,6 +28,12 @@ public class MainDataSourceConfig {
     @Value("${spring.ds_main.datasource.initialize}")
     private boolean isDataSourceInitialize;
 
+    /**
+     * {@link DataSource}の設定<br>
+     * `application.properties`の`spring.ds_main.datasource.*`を参照
+     *
+     * @return
+     */
     @Primary
     @Bean("mainDataSource")
     @ConfigurationProperties(prefix = "spring.ds_main.datasource")
@@ -40,6 +46,12 @@ public class MainDataSourceConfig {
         return new JdbcTemplate(dataSource);
     }
 
+    /**
+     * {@link javax.persistence.EntityManager}の設定
+     *
+     * @param builder
+     * @return
+     */
     @Primary
     @Bean("mainEntityManagerFactory")
     LocalContainerEntityManagerFactoryBean mainEntityManagerFactory(final EntityManagerFactoryBuilder builder) {
@@ -49,6 +61,12 @@ public class MainDataSourceConfig {
                 .build();
     }
 
+    /**
+     * application起動時にDBを初期化する
+     *
+     * @param dataSource
+     * @return
+     */
     @Bean("mainDataSourceInitializer")
     DataSourceInitializer mainDataSourceInitializer(@Qualifier("mainDataSource") final DataSource dataSource) {
         final DataSourceInitializer initializer = new DataSourceInitializer();

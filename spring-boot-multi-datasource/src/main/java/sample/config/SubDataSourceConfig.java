@@ -17,6 +17,9 @@ import sample.domain.models.sub.SubTable;
 
 import javax.sql.DataSource;
 
+/**
+ * @see MainDataSourceConfig
+ */
 @Configuration
 @EnableJpaRepositories(basePackageClasses = {SubTable.class}, entityManagerFactoryRef = "subEntityManagerFactory")
 public class SubDataSourceConfig {
