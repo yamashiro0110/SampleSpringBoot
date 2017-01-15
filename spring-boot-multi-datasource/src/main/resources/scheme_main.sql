@@ -1,0 +1,8 @@
+DROP TABLE main_table IF EXISTS;
+
+CREATE TABLE main_table (
+    id BIGINT PRIMARY KEY NOT NULL,
+    msg VARCHAR NOT NULL DEFAULT '',
+    created TIMESTAMP NOT NULL,
+    updated TIMESTAMP
+);

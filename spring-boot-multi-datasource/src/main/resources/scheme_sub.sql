@@ -1,0 +1,8 @@
+DROP TABLE sub_table IF EXISTS;
+
+CREATE TABLE sub_table (
+    id BIGINT PRIMARY KEY NOT NULL,
+    msg VARCHAR NOT NULL DEFAULT '',
+    created TIMESTAMP NOT NULL,
+    updated TIMESTAMP
+);
