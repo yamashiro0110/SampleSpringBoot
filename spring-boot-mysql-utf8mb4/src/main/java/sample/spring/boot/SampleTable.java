@@ -1,8 +1,6 @@
 package sample.spring.boot;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +16,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString
+@Builder
 public class SampleTable {
     @Id
     @Column(name = "sample_id")

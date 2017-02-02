@@ -2,6 +2,16 @@
 
 SpringBootでMySQL5.7+utf8mb4を扱う。
 
+serverのcharacter_setの設定は`utf8`。
+
+schemeのcharacter_setは`utf8mb4`で、4byte文字を登録出来るか。
+
+## scheme
+
+```sql
+CREATE DATABASE sample_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
+
 ## Usage
 
 ```sh
