@@ -1,4 +1,4 @@
 # Spring Boot
 
 *****
-Spring Bootを動かして理解するためのリポジトリ
+`Spring Boot`の勉強用
