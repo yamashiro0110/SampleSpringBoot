@@ -56,3 +56,4 @@ gradle-app.setting
 !gradle-wrapper.jar
 
 **/logs/*
+**/classes/*
