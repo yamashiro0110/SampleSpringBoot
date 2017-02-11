@@ -1,6 +1,6 @@
 # spring-boot-oauth
 
-OAuthにログイン
+OAuthログインのsample
 
 ## Google
 
