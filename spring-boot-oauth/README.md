@@ -4,7 +4,9 @@ OAuthログインのsample
 
 ## Google
 
-http://localhost:8080/oauth/google
+access point url
+
+- http://localhost:8080/oauth/google
 
 required parameter
 
