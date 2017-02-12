@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class YahooJapanOAuthController {
 
     @GetMapping
     String redirect() {
-        return "redirect:" + this.authUrl();
+        return "redirect:" + this.yahooJapanOAuthService.getAuthorizationUrl();
     }
 
     @GetMapping(path = "callback", params = "code")
@@ -50,6 +51,14 @@ public class YahooJapanOAuthController {
         final OAuth2AccessToken accessToken = this.yahooJapanOAuthService.getAccessToken(code);
         model.addAttribute("response", this.user(accessToken));
         return "/response";
+    }
+
+    @GetMapping("callback/export")
+    @ResponseBody
+    String export(
+            @RequestParam("code") final String code,
+            @RequestParam(name = "state", required = false) final String state) {
+        return MessageFormat.format("code: {0}, state: {1}", code, state);
     }
 
     @GetMapping(path = "callback", params = {"error", "error_description"})

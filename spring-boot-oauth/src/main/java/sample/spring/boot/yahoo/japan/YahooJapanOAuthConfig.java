@@ -18,10 +18,6 @@ public class YahooJapanOAuthConfig {
     @Value("${sample.oauth.yahooJapan.secret}")
     private String secret;
 
-    private String callbackUrl() {
-        return "http://localhost:8080/oauth/yahoo_japan/callback";
-    }
-
     private String secretState() {
         return UUID.randomUUID().toString();
     }
@@ -31,7 +27,7 @@ public class YahooJapanOAuthConfig {
         return new ServiceBuilder()
                 .apiKey(this.apiKey)
                 .apiSecret(this.secret)
-                .callback(this.callbackUrl())
+                .callback("http://localhost:8080/oauth/yahoo_japan/callback")
                 .state(this.secretState())
                 .responseType("code")
                 .scope("openid profile")

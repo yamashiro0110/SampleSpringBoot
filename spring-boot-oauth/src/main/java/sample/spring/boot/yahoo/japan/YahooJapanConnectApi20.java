@@ -5,8 +5,6 @@ import com.github.scribejava.core.model.OAuthConfig;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-import java.util.Map;
-
 /**
  * Created by yamashiro-r on 2017/02/12.
  */
@@ -26,11 +24,6 @@ public class YahooJapanConnectApi20 extends DefaultApi20 {
     @Override
     protected String getAuthorizationBaseUrl() {
         return "https://auth.login.yahoo.co.jp/yconnect/v1/authorization";
-    }
-
-    @Override
-    public String getAuthorizationUrl(final OAuthConfig config, final Map<String, String> additionalParams) {
-        return super.getAuthorizationUrl(config, additionalParams);
     }
 
     @Override
