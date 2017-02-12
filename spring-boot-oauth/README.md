@@ -2,14 +2,35 @@
 
 OAuthログインのsample
 
-## Google
+## OAuth Settings
 
-access point url
+環境変数にappIdとappSecretを設定
 
-- http://localhost:8080/oauth/google
+```sh
+$ export SAMPLE_OAUTH_GOOGLE_APIKEY="xxx"
+$ export SAMPLE_OAUTH_GOOGLE_SECRET="xxx"
+$ export SAMPLE_OAUTH_YAHOOJAPAN_APIKEY="xxx"
+$ export SAMPLE_OAUTH_YAHOOJAPAN_SECRET="xxx"
+```
 
-required parameter
+or
 
-- `sample.oauth.google.apikey`
+`src/main/resources/application-oauth.properties`を作成して設定を記述する
+> `application.properties`でincludeしてる
 
-- `sample.oauth.google.secret`
+```
+sample.oauth.google.apikey=xxx
+sample.oauth.google.secret=xxx
+sample.oauth.yahooJapan.apikey=xxx
+sample.oauth.yahooJapan.secret=xxx
+```
+
+## Usage
+
+アプリケーション起動
+
+```sh
+$ ./gradlew bootRun
+```
+
+`localhost:8080`にアクセスする
