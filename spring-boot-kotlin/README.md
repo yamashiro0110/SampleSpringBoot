@@ -14,6 +14,10 @@ $ gradle build
 $ cp -f build/libs/spring-boot-kotlin.jar bin/
 ```
 
+```sh
+$ ./bin/spring-boot-kotlin.jar start
+```
+
 bootRun
 
 ```sh
