@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import javax.annotation.Resource
 
+fun main(args: Array<String>) {
+    SpringApplication.run(SpringBootKotlinApplication::class.java, *args)
+}
+
 @SpringBootApplication
 open class SpringBootKotlinApplication : CommandLineRunner {
 
@@ -23,10 +27,5 @@ open class SpringBootKotlinApplication : CommandLineRunner {
     open fun messageIfTrue() = "hello kotlin!!"
 
     @Bean("sample_message")
-    @ConditionalOnProperty(prefix = "sample.kotlin.msg", name = arrayOf("disable"))
     open fun messageIfFalse() = "bye kotlin..."
-}
-
-fun main(args: Array<String>) {
-    SpringApplication.run(SpringBootKotlinApplication::class.java, *args)
 }
