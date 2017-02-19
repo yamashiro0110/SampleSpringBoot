@@ -11,7 +11,7 @@ import javax.annotation.Resource
  * Created by yamashiro-r on 2017/02/14.
  */
 @Controller
-@RequestMapping("/hello")
+@RequestMapping("/")
 open class KotlinController {
     @Resource(name = "sample_message")
     private var message = ""
