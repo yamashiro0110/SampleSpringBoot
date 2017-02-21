@@ -1,29 +1,29 @@
 package sample.spring.boot
 
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
-import javax.annotation.Resource
+import org.springframework.web.bind.annotation.RequestParam
 
 /**
- * Created by yamashiro-r on 2017/02/14.
+ * Created by yamashiro-r on 2017/02/21.
  */
 @Controller
-@RequestMapping("/")
-open class KotlinController {
-    @Resource(name = "sample_message")
-    private var message = ""
+@RequestMapping("/web")
+class KotlinController {
 
-    @Value("\${sample.kotlin.msg.any:any message none...}")
-    private var anyMessage = ""
+    @ModelAttribute("options")
+    fun options() = arrayOf("apple", "pineapple", "apple pen")
 
     @GetMapping
-    @ResponseBody
-    fun hello() = "message is ${this.message}"
+    fun index() = "index"
 
-    @GetMapping("any")
-    @ResponseBody
-    fun any() = "anyMessage is ${this.anyMessage}"
+    @GetMapping(params = arrayOf("selected_option"))
+    fun index(@RequestParam("selected_option") option: String, model: Model): String {
+        model.addAttribute("selected_option", option)
+        return "index"
+    }
+
 }

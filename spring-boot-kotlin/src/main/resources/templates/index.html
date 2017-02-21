@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+  <meta charset="UTF-8"/>
+  <title>hello kotlin</title>
+</head>
+<body>
+<h1>Hello kotlin!</h1>
+<hr/>
+
+<form th:action="@{/web}" method="get">
+  <select name="selected_option">
+    <option th:each="option : ${options}"
+            th:selected="${option} == ${selected_option}"
+            th:text="${option}">
+      text
+    </option>
+  </select>
+  <input type="submit" value="submit"/>
+</form>
+
+</body>
+</html>
