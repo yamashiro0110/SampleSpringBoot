@@ -1,4 +1,4 @@
-package sample.spring.boot
+package sample.spring.boot.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model

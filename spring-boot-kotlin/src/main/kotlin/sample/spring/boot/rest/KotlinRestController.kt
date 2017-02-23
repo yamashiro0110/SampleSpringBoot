@@ -1,16 +1,15 @@
-package sample.spring.boot
+package sample.spring.boot.rest
 
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.RestController
 import javax.annotation.Resource
 
 /**
  * Created by yamashiro-r on 2017/02/14.
  */
-@Controller
+@RestController
 @RequestMapping("/api")
 open class KotlinRestController {
     @Resource(name = "sample_message")
@@ -20,10 +19,8 @@ open class KotlinRestController {
     private var anyMessage = ""
 
     @GetMapping
-    @ResponseBody
     fun hello() = "message is ${this.message}"
 
     @GetMapping("any")
-    @ResponseBody
     fun any() = "anyMessage is ${this.anyMessage}"
 }
