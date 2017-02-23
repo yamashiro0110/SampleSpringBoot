@@ -6,6 +6,13 @@ serverのcharacter_setの設定は`utf8`。
 
 schemeのcharacter_setは`utf8mb4`で、4byte文字を登録出来るか。
 
+## 結果
+
+MyBatisで`default-character-set = utf8`のときに、4バイト文字をinsert出来ない。
+> `default-character-set = utf8mb4`をmysql_serverで設定する必要がある
+
+JPA(Hibernate)だと、`default-character-set = utf8`でもinsert出来る。
+
 ## scheme
 
 ```sql

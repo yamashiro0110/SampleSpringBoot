@@ -2,10 +2,7 @@ package sample.spring.boot;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -20,11 +17,15 @@ import java.util.Date;
 @Builder
 public class SampleTable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sample_id")
     Long id;
 
     @Column(name = "sample_name")
     String name;
+
+    @Column(name = "post")
+    String post;
 
     @Column(name = "created")
     Date created;

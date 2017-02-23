@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+  <meta charset="UTF-8"/>
+  <title>title</title>
+</head>
+<body>
+<h1>sample tables</h1>
+<hr/>
+
+<div>
+  <form th:action="@{/sample/save/jpa}" method="post">
+    <input type="submit" value="save/jpa"/><br/>
+    <textarea name="post" rows="10" cols="50"></textarea>
+  </form>
+</div>
+<hr/>
+
+<div>
+  <form th:action="@{/sample/save/mapper}" method="post">
+    <input type="submit" value="save/mapper"/><br/>
+    <textarea name="post" rows="10" cols="50"></textarea>
+  </form>
+</div>
+<hr/>
+
+<div>
+  <ul>
+    <li th:each="table : ${sampleTables}">
+      <p>id: <span th:text="${table.id}"></span></p>
+      <p>name: <span th:text="${table.name}"></span></p>
+      <p>post: <span th:text="${table.post}"></span></p>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

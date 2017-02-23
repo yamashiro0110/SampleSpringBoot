@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sample.spring.boot.SampleTableMapper">
+    <resultMap id="SampleTable" type="sample.spring.boot.SampleTable">
+    </resultMap>
+    <select id="findAll" resultMap="SampleTable">
+        select
+        sample_id id,
+        sample_name name,
+        post,
+        created
+        from sample_table
+        order by sample_id desc
+    </select>
+    <insert id="save">
+        INSERT INTO sample_table (sample_id, sample_name, post, created) VALUES
+        (#{s.id}, #{s.name}, #{s.post}, now())
+    </insert>
+</mapper>
