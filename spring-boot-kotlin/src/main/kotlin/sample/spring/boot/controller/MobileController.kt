@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 class MobileController {
 
     @ModelAttribute("device")
-    fun device(device: Device) = device.devicePlatform.name
+    fun device(device: Device) = device
+
+    @ModelAttribute("deviceName")
+    fun deviceName(device: Device) = device.devicePlatform.name
 
     @GetMapping
     fun index() = "mobile"
