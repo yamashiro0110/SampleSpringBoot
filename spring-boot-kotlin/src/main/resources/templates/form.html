@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>form</title>
+</head>
+
+<body>
+
+<main>
+  <div>
+    <form th:action="@{/form}" method="get">
+      <select name="selected_option">
+        <option th:each="option : ${options}" th:selected="${option} == ${selected_option}" th:text="${option}">
+          text
+        </option>
+      </select>
+      <input type="submit" value="submit"/>
+    </form>
+  </div>
+</main>
+
+</body>
+</html>

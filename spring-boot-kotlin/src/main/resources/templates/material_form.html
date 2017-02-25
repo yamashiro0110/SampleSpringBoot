@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="ja" th:replace="component :: head"></head>
+
+<body>
+
+<div th:replace="component :: content(~{::main})">
+  <main>
+    <div>
+      <p>
+        selected option is:
+        <span th:text="${selected_option}">selected_option</span>
+      </p>
+
+      <!-- Dropdown Trigger -->
+      <a class='dropdown-button btn' href='#' data-activates='dropdown1'>select option</a>
+
+      <!-- Dropdown Structure -->
+      <ul id='dropdown1' class='dropdown-content'>
+        <li th:each="option : ${options}">
+          <a th:href="@{/form/material?selected_option={option}(option=${option})}" th:text="${option}">one</a>
+        </li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

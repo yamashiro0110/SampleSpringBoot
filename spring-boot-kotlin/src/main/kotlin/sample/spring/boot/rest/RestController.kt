@@ -10,8 +10,8 @@ import javax.annotation.Resource
  * Created by yamashiro-r on 2017/02/14.
  */
 @RestController
-@RequestMapping("/api")
-open class KotlinRestController {
+@RequestMapping("/rest")
+open class RestController {
     @Resource(name = "sample_message")
     private var message = ""
 

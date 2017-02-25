@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head lang="ja" th:fragment="head">
+    <meta charset="UTF-8" />
+    <title>sample spring boot mobile</title>
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+
+
+    <div th:fragment="content(content)">
+      <!-- side-bar -->
+      <ul id="slide-out" class="side-nav indigo lighten-5" th:fragment="side-nav">
+        <li>
+          <div class="userView">
+            <div class="background">
+              <!--<img src="images/office.jpg"/>-->
+            </div>
+            <!--<a href="#!user"><img class="circle" src="images/yuna.jpg"/></a>-->
+            <a href="#!name">
+              <span class="white-text name">John Doe</span>
+            </a>
+            <a href="#!email">
+              <span class="white-text email">jdandturk@gmail.com</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a th:href="@{/}"><i class="material-icons">home</i>top</a>
+        </li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li>
+          <a th:href="@{/mobile}">
+            <i class="material-icons">smartphone</i>
+            mobile
+          </a>
+        </li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li>
+          <a th:href="@{/oauth}">
+            <i class="material-icons">account_circle</i>
+            oauth
+          </a>
+        </li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li>
+          <a th:href="@{/form/material}">
+            <i class="material-icons">web</i>
+            form
+          </a>
+        </li>
+        <li>
+          <div class="divider"></div>
+        </li>
+      </ul>
+
+      <!--navigation bar-->
+      <nav class="indigo">
+        <div class="nav-wrapper">
+          <a th:href="@{/}" class="brand-logo">spring boot kotlin</a>
+          <a href="#" data-activates="slide-out" class="button-collapse left">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a th:href="@{/mobile}">
+                <i class="material-icons">smartphone</i>
+              </a>
+            </li>
+            <li>
+              <a th:href="@{/oauth}">
+                <i class="material-icons">account_circle</i>
+              </a>
+            </li>
+            <li>
+              <a th:href="@{/form/material}">
+                <i class="material-icons">web</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!--content-->
+      <div class="container">
+        <!--title-->
+        <!--<h3>Hello Spring Boot kotlin</h3>-->
+
+        <div th:replace="${content}"></div>
+      </div>
+
+      <!--footer-->
+      <!-- <footer class="page-footer indigo" th:include="component :: footer"></footer> -->
+
+    </div>
+
+    <!--footer-->
+    <footer class="page-footer indigo" th:fragment="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l4 offset-l2 s12">
+            <!--<h5 class="white-text">Links</h5>-->
+            <ul>
+              <!--<li><a class="grey-text text-lighten-3" th:href="@{/mobile}">mobile</a></li>-->
+              <!--<li><a class="grey-text text-lighten-3" th:href="@{/oauth}">oauth</a></li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--<div class="footer-copyright">-->
+      <!--<div class="container">-->
+      <!--© 2014 Copyright Text-->
+      <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+      <!--</div>-->
+      <!--</div>-->
+    </footer>
+
+  </body>
+
+</html>

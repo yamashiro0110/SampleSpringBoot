@@ -57,3 +57,5 @@ gradle-app.setting
 
 **/logs/*
 **/classes/*
+
+*.zip

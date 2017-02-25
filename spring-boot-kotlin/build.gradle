@@ -31,14 +31,24 @@ repositories {
 
 
 dependencies {
+    compile 'org.springframework.mobile:spring-mobile-device:1.1.4.RELEASE'
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-devtools')
     compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+
+    runtime('com.h2database:h2')
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 springBoot {
     executable = true
+}
+
+ext {
+    set('thymeleaf.version', '3.0.2.RELEASE')
+    set('thymeleaf-layout-dialect.version', '2.1.1')
 }
