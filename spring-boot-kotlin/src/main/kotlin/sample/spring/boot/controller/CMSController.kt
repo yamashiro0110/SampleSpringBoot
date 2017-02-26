@@ -3,10 +3,9 @@ package sample.spring.boot.controller
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
+import sample.spring.boot.models.PostImage
 
 /**
  * Created by yamashiro-r on 2017/02/26.
@@ -24,6 +23,21 @@ class CMSController {
         logger.info("content: $content")
         model.addAttribute("result", content)
         return "cms_result"
+    }
+
+    @PostMapping("file_upload")
+    @ResponseBody
+    fun fileUpload(@RequestParam("files[]") images: Array<MultipartFile>): Map<String, List<PostImage>> {
+        val files = images.map { this.createImage(it) }
+        return mapOf(Pair("files", files))
+    }
+
+    private fun createImage(file: MultipartFile): PostImage {
+        return PostImage(
+                name = file.originalFilename,
+                url = "image/${file.originalFilename}",
+                size = file.size
+        )
     }
 
 }
