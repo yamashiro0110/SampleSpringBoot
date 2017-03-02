@@ -38,6 +38,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-devtools')
     compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+    compile("mysql:mysql-connector-java:5.1.40")
 
     runtime('com.h2database:h2')
 
