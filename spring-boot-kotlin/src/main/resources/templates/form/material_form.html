@@ -10,7 +10,7 @@
     <div>
       <p>
         selected option is:
-        <span th:text="${selected_option}">selected_option</span>
+        <span th:textList="${selected_option}">selected_option</span>
       </p>
 
       <!-- Dropdown Trigger -->
@@ -19,7 +19,7 @@
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>
         <li th:each="option : ${options}">
-          <a th:href="@{/form/material?selected_option={option}(option=${option})}" th:text="${option}">one</a>
+          <a th:href="@{/form/material?selected_option={option}(option=${option})}" th:textList="${option}">one</a>
         </li>
       </ul>
     </div>

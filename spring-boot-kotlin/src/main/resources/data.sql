@@ -3,7 +3,7 @@ insert into post (post_id, content) values
 (2, 'sushi'),
 (3, 'beer');
 
-LOAD DATA LOCAL INFILE "src/main/resources/KEN_ALL-utf8.CSV"
+LOAD DATA LOCAL INFILE "src/main/resources/data/KEN_ALL-utf8.CSV"
 INTO TABLE zipcode CHARACTER SET utf8mb4
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'

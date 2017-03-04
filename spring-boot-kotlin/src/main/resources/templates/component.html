@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" />
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <!-- Compiled and minified JavaScript -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <script type="textList/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="textList/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script type="textList/javascript" th:src="@{/js/app.js}"></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -29,17 +29,17 @@
             </div>
             <!--<a href="#!user"><img class="circle" src="images/yuna.jpg"/></a>-->
             <a href="#!name">
-              <span class="white-text name">John Doe</span>
+              <span class="white-textList name">John Doe</span>
             </a>
             <a href="#!email">
-              <span class="white-text email">jdandturk@gmail.com</span>
+              <span class="white-textList email">jdandturk@gmail.com</span>
             </a>
           </div>
         </li>
         <li th:each="link : ${@pageLinks}" th:object="${link}">
           <a th:href="@{*{path}}">
             <i class="material-icons">[[*{icon}]]</i>
-            [[*{text}]]
+            [[*{textList}]]
           </a>
         </li>
       </ul>
@@ -74,10 +74,10 @@
       <div class="container">
         <div class="row">
           <div class="col l4 offset-l2 s12">
-            <!--<h5 class="white-text">Links</h5>-->
+            <!--<h5 class="white-textList">Links</h5>-->
             <ul>
-              <!--<li><a class="grey-text text-lighten-3" th:href="@{/mobile}">mobile</a></li>-->
-              <!--<li><a class="grey-text text-lighten-3" th:href="@{/oauth}">oauth</a></li>-->
+              <!--<li><a class="grey-textList textList-lighten-3" th:href="@{/mobile}">mobile</a></li>-->
+              <!--<li><a class="grey-textList textList-lighten-3" th:href="@{/oauth}">oauth</a></li>-->
             </ul>
           </div>
         </div>

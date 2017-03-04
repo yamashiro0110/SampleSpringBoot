@@ -11,8 +11,8 @@
   <div>
     <form th:action="@{/form}" method="get">
       <select name="selected_option">
-        <option th:each="option : ${options}" th:selected="${option} == ${selected_option}" th:text="${option}">
-          text
+        <option th:each="option : ${options}" th:selected="${option} == ${selected_option}" th:textList="${option}">
+          textList
         </option>
       </select>
       <input type="submit" value="submit"/>

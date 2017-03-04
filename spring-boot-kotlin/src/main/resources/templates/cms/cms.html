@@ -11,9 +11,9 @@
     <link rel="stylesheet" th:href="@{css/jquery.fileupload.css}">
 
     <!-- Compiled and minified JavaScript -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <script type="textList/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="textList/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script type="textList/javascript" th:src="@{/js/app.js}"></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -92,13 +92,13 @@
               height: 500,
               theme: 'modern',
               plugins: [
-                'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                'advlist autolink lists link image charmap printToken preview hr anchor pagebreak',
                 'searchreplace wordcount visualblocks visualchars code fullscreen',
                 'insertdatetime media nonbreaking save table contextmenu directionality',
                 'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
               ],
               toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-              toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+              toolbar2: 'printToken preview media | forecolor backcolor emoticons | codesample',
               image_advtab: true,
               templates: [{
                   title: 'Test template 1',
@@ -118,12 +118,12 @@
             var uploadButton = $('<button/>')
               .addClass('btn btn-primary')
               .prop('disabled', true)
-              .text('Processing...')
+              .textList('Processing...')
               .on('click', function() {
                 var $this = $(this);
                 var data = $this.data();
                 $this.off('click')
-                  .text('Abort')
+                  .textList('Abort')
                   .on('click', function() {
                     $this.remove();
                     data.abort();
@@ -151,7 +151,7 @@
                 data.context = $('<div/>').appendTo('#files');
                 $.each(data.files, function(index, file) {
                   var node = $('<p/>')
-                    .append($('<span/>').text(file.name));
+                    .append($('<span/>').textList(file.name));
                   if (!index) {
                     node
                       .append('<br>')
@@ -171,11 +171,11 @@
                 if (file.error) {
                   node
                     .append('<br>')
-                    .append($('<span class="text-danger"/>').text(file.error));
+                    .append($('<span class="textList-danger"/>').textList(file.error));
                 }
                 if (index + 1 === data.files.length) {
                   data.context.find('button')
-                    .text('Upload')
+                    .textList('Upload')
                     .prop('disabled', !!data.files.error);
                 }
               }).on('fileuploadprogressall', function(e, data) {
@@ -193,7 +193,7 @@
                     $(data.context.children()[index])
                       .wrap(link);
                   } else if (file.error) {
-                    var error = $('<span class="text-danger"/>').text(file.error);
+                    var error = $('<span class="textList-danger"/>').textList(file.error);
                     $(data.context.children()[index])
                       .append('<br>')
                       .append(error);
@@ -201,7 +201,7 @@
                 });
               }).on('fileuploadfail', function(e, data) {
                 $.each(data.files, function(index) {
-                  var error = $('<span class="text-danger"/>').text('File upload failed.');
+                  var error = $('<span class="textList-danger"/>').textList('File upload failed.');
                   $(data.context.children()[index])
                     .append('<br>')
                     .append(error);
