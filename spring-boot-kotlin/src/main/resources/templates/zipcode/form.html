@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="ja" th:replace="component :: head"></head>
+
+<body>
+
+<div th:replace="component :: content(~{::main})">
+  <main>
+    <div class="row">
+      <form class="col s12" th:action="@{/zipcode/search}" method="get">
+        <div class="row"></div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="zipcode" id="query" name="query" type="text" class="validate" th:value="${query}"/>
+            <label for="query">ZipCode query</label>
+          </div>
+          <div class="col s6">
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+              Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+        <!--<div class="row">-->
+        <!--</div>-->
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="card">
+
+        <table>
+          <thead>
+            <tr>
+              <th data-field="zipCode">zipCode</th>
+              <th data-field="prefectures">prefectures</th>
+              <th data-field="city">city</th>
+              <th data-field="town">town</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="zipCode : ${zipCodeList}" th:object="${zipCode}">
+              <td><a th:href="@{/zipcode/search?query={query}(query=*{zipCode})}">[[*{zipCode}]]</a></td>
+              <td><a th:href="@{/zipcode/search?query={query}(query=*{prefectures})}">[[*{prefectures}]]</a></td>
+              <td><a th:href="@{/zipcode/search?query={query}(query=*{city})}">[[*{city}]]</a></td>
+              <td><a th:href="@{/zipcode/search?query={query}(query=*{town})}">[[*{town}]]</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--<div class="card-action">-->
+          <!--<a th:href="@{/zipcode/search?query={query}(query=*{zipCode})}">[[*{zipCode}]]</a>-->
+          <!--<a th:href="@{/zipcode/search?query={query}(query=*{prefectures})}">[[*{prefectures}]]</a>-->
+          <!--<a th:href="@{/zipcode/search?query={query}(query=*{city})}">[[*{city}]]</a>-->
+          <!--<a th:href="@{/zipcode/search?query={query}(query=*{town})}">[[*{town}]]</a>-->
+        <!--</div>-->
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

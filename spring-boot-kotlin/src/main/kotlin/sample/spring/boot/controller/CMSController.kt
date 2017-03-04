@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
-import sample.spring.boot.models.PostImage
+import sample.spring.boot.models.post.PostImage
 
 /**
  * Created by yamashiro-r on 2017/02/26.

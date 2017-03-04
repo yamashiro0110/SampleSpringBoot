@@ -36,47 +36,11 @@
             </a>
           </div>
         </li>
-        <li>
-          <a th:href="@{/}"><i class="material-icons">home</i>top</a>
-        </li>
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li>
-          <a th:href="@{/mobile}">
-            <i class="material-icons">smartphone</i>
-            mobile
+        <li th:each="link : ${@pageLinks}" th:object="${link}">
+          <a th:href="@{*{path}}">
+            <i class="material-icons">[[*{icon}]]</i>
+            [[*{text}]]
           </a>
-        </li>
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li>
-          <a th:href="@{/oauth}">
-            <i class="material-icons">account_circle</i>
-            oauth
-          </a>
-        </li>
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li>
-          <a th:href="@{/form/material}">
-            <i class="material-icons">web</i>
-            form
-          </a>
-        </li>
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li>
-          <a th:href="@{/cms}">
-            <i class="material-icons">description</i>
-            cms
-          </a>
-        </li>
-        <li>
-          <div class="divider"></div>
         </li>
       </ul>
 
@@ -87,25 +51,10 @@
           <a href="#" data-activates="slide-out" class="button-collapse left">
             <i class="material-icons">menu</i>
           </a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <ul id="nav-mobile" class="right hide-on-med-and-down" th:each="link : ${@pageLinks}" th:object="${link}">
             <li>
-              <a th:href="@{/mobile}">
-                <i class="material-icons">smartphone</i>
-              </a>
-            </li>
-            <li>
-              <a th:href="@{/oauth}">
-                <i class="material-icons">account_circle</i>
-              </a>
-            </li>
-            <li>
-              <a th:href="@{/form/material}">
-                <i class="material-icons">web</i>
-              </a>
-            </li>
-            <li>
-              <a th:href="@{/cms}">
-                <i class="material-icons">description</i>
+              <a th:href="@{*{path}}">
+                <i class="material-icons">[[*{icon}]]</i>
               </a>
             </li>
           </ul>
@@ -114,15 +63,10 @@
 
       <!--content-->
       <div class="container">
-        <!--title-->
-        <!--<h3>Hello Spring Boot kotlin</h3>-->
-
         <div th:replace="${content}"></div>
       </div>
-
       <!--footer-->
       <!-- <footer class="page-footer indigo" th:include="component :: footer"></footer> -->
-
     </div>
 
     <!--footer-->
@@ -138,12 +82,6 @@
           </div>
         </div>
       </div>
-      <!--<div class="footer-copyright">-->
-      <!--<div class="container">-->
-      <!--© 2014 Copyright Text-->
-      <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
-      <!--</div>-->
-      <!--</div>-->
     </footer>
 
   </body>

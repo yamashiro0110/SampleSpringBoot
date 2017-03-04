@@ -49,6 +49,10 @@ springBoot {
     executable = true
 }
 
+bootRun {
+    systemProperties = System.properties
+}
+
 ext {
     set('thymeleaf.version', '3.0.2.RELEASE')
     set('thymeleaf-layout-dialect.version', '2.1.1')

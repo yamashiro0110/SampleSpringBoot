@@ -7,7 +7,21 @@
 
 <div th:replace="component :: content(~{::main})">
   <main>
-    <h5>index page</h5>
+
+    <div class="row">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>contents</h4></li>
+        <li class="collection-item" th:each="link : ${@pageLinks}" th:object="${link}">
+          <a th:href="@{*{path}}">
+            <div>
+              [[*{text}]]
+              <a class="secondary-content"><i class="material-icons">[[*{icon}]]</i></a>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
   </main>
 </div>
 
