@@ -20,6 +20,6 @@ class MobileController {
     fun deviceName(device: Device) = device.devicePlatform.name
 
     @GetMapping
-    fun index() = "mobile"
+    fun index() = "mobile/mobile"
 
 }

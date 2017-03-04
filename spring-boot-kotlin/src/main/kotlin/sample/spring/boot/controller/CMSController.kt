@@ -16,13 +16,13 @@ class CMSController {
     val logger = LoggerFactory.getLogger(CMSController::class.java)
 
     @GetMapping
-    fun cms() = "cms"
+    fun cms() = "cms/cms"
 
     @PostMapping
     fun post(@RequestParam("content") content: String, model: Model): String {
         logger.info("content: $content")
         model.addAttribute("result", content)
-        return "cms_result"
+        return "cms/cms_result"
     }
 
     @PostMapping("file_upload")

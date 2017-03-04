@@ -20,7 +20,7 @@ class OAuthController {
     fun facebookAppId() = this.facebookAppId
 
     @GetMapping
-    fun index() = "oauth"
+    fun index() = "oauth/oauth"
 
     @GetMapping(path = arrayOf("facebook/callback"), params = arrayOf("code"))
     fun callbackFacebook(@RequestParam("code") code: String) = "facebook callback: $code"

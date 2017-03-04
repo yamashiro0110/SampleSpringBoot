@@ -18,7 +18,7 @@ class FormController {
     fun options() = arrayOf("apple", "pineapple", "apple pen")
 
     @GetMapping
-    fun index() = "form"
+    fun index() = "form/form"
 
     @GetMapping(params = arrayOf("selected_option"))
     fun index(@RequestParam("selected_option") option: String, model: Model): String {
@@ -27,7 +27,7 @@ class FormController {
     }
 
     @GetMapping("material")
-    fun material() = "material_form"
+    fun material() = "form/material_form"
 
     @GetMapping(path = arrayOf("material"), params = arrayOf("selected_option"))
     fun material(@RequestParam("selected_option") option: String, model: Model): String {
