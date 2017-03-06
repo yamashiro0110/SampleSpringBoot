@@ -16,5 +16,13 @@ CREATE TABLE zipcode (
     town_kana varchar(255) NOT NULL,
     prefectures varchar(255) NOT NULL,
     city varchar(255) NOT NULL,
-    town varchar(255) NOT NULL
+    town varchar(255) NOT NULL,
+    FULLTEXT prefectures_index(
+        prefectures,
+        city,
+        town,
+        prefectures_kana,
+        city_kana,
+        town_kana
+    )
 );

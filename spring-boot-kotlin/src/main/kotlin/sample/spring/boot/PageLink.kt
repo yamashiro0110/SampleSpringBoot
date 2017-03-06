@@ -13,13 +13,14 @@ class PageLink(
         val icon: String = "description") {
 
     @Bean("pageLinks")
-    fun pageLinks() = arrayListOf<PageLink>(
+    fun pageLinks() = arrayListOf(
             PageLink(path = "/h2-console", text = "h2-console"),
             PageLink(path = "/mobile", text = "mobile"),
             PageLink(path = "/oauth", text = "oauth"),
             PageLink(path = "/form/material", text = "form"),
             PageLink(path = "/cms", text = "cms"),
             PageLink(path = "/post", text = "post"),
+            PageLink(path = "/file/uploader", text = "file-uploader"),
             PageLink(path = "/zipcode", text = "zipcode")
     )
 
