@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="ja" th:replace="component :: head"></head>
+
+<body>
+
+<div th:replace="component :: content(~{::main})">
+  <main>
+    <div class="row">
+      <form class="col s12" th:action="@{/session}" method="get">
+        <div class="row">
+          <div class="input-field col s10">
+            <input placeholder="name" id="name" name="name" type="text" class="validate" th:value="${session.userName}" />
+            <label for="name">user name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s10">
+            <input placeholder="name" id="email" name="email" type="email" class="validate" th:value="${session.email}" />
+            <label for="email">email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s10">
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+              Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

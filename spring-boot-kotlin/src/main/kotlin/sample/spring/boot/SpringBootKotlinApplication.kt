@@ -1,5 +1,6 @@
 package sample.spring.boot
 
+import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -14,12 +15,14 @@ fun main(args: Array<String>) {
 @SpringBootApplication
 open class SpringBootKotlinApplication : CommandLineRunner {
 
+    private val logger = LoggerFactory.getLogger(SpringBootKotlinApplication::class.java)
+
     @Resource(name = "sample_message")
     private var message = ""
 
     override fun run(vararg args: String?) {
-        println("run kotlin")
-        println("message is $message")
+        logger.info("run kotlin")
+        logger.info("message is $message")
     }
 
     @Bean("sample_message")

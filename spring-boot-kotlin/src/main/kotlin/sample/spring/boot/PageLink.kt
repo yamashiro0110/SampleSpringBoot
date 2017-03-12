@@ -15,13 +15,14 @@ class PageLink(
     @Bean("pageLinks")
     fun pageLinks() = arrayListOf(
             PageLink(path = "/h2-console", text = "h2-console"),
-            PageLink(path = "/mobile", text = "mobile"),
-            PageLink(path = "/oauth", text = "oauth"),
-            PageLink(path = "/form/material", text = "form"),
-            PageLink(path = "/cms", text = "cms"),
+            PageLink(path = "/mobile", text = "mobile", icon = "smartphone"),
+            PageLink(path = "/oauth", text = "oauth", icon = "security"),
+            PageLink(path = "/form/material", text = "form", icon = "input"),
+            PageLink(path = "/cms", text = "cms", icon = "web_asset"),
             PageLink(path = "/post", text = "post"),
-            PageLink(path = "/file/uploader", text = "file-uploader"),
-            PageLink(path = "/zipcode", text = "zipcode")
+            PageLink(path = "/file/uploader", text = "file-uploader", icon = "attach_file"),
+            PageLink(path = "/zipcode", text = "zipcode", icon = "local_post_office"),
+            PageLink(path = "/session", text = "session", icon = "storage")
     )
 
 }
