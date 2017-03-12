@@ -13,7 +13,7 @@
           <div class="card-content">
             <span class="card-title">device type</span>
             <p>
-              your device is <span th:textList="${deviceName}"></span>
+              your device is <span th:text="${deviceName}"></span>
             </p>
           </div>
           <div class="card-action">
@@ -25,15 +25,15 @@
     <div class="collection" th:object="${device}">
       <a href="#!" class="collection-item">
         isNormal:
-        <span th:textList="*{normal} ? 'true' : 'false'"></span>
+        <span th:text="*{normal} ? 'true' : 'false'"></span>
       </a>
       <a href="#!" class="collection-item">
         isMobile:
-        <span th:textList="*{mobile} ? 'true' : 'false'"></span>
+        <span th:text="*{mobile} ? 'true' : 'false'"></span>
       </a>
       <a href="#!" class="collection-item">
         isTablet:
-        <span th:textList="*{tablet} ? 'true' : 'false'"></span>
+        <span th:text="*{tablet} ? 'true' : 'false'"></span>
       </a>
     </div>
   </main>

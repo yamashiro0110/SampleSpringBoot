@@ -10,7 +10,7 @@
     <div class="collection">
       <a href="#!" class="collection-item" th:each="post : ${posts}" th:object="${post}">
         <span>id: [[*{id}]]</span>
-        <p th:textList="*{content}">post contents</p>
+        <p th:text="*{content}">post contents</p>
       </a>
     </div>
   </main>
