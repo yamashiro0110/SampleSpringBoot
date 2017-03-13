@@ -11,6 +11,8 @@ $ export SAMPLE_OAUTH_GOOGLE_APIKEY="xxx"
 $ export SAMPLE_OAUTH_GOOGLE_SECRET="xxx"
 $ export SAMPLE_OAUTH_YAHOOJAPAN_APIKEY="xxx"
 $ export SAMPLE_OAUTH_YAHOOJAPAN_SECRET="xxx"
+$ export SAMPLE_OAUTH_FACEBOOK_APIKEY="xxx"
+$ export SAMPLE_OAUTH_FACEBOOK_SECRET="xxx"
 ```
 
 or
@@ -23,6 +25,8 @@ sample.oauth.google.apikey=xxx
 sample.oauth.google.secret=xxx
 sample.oauth.yahooJapan.apikey=xxx
 sample.oauth.yahooJapan.secret=xxx
+sample.oauth.facebook.apikey=xxx
+sample.oauth.facebook.secret=xxx
 ```
 
 ## Usage
