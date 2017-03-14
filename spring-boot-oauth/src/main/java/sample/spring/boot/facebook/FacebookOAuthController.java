@@ -25,7 +25,7 @@ public class FacebookOAuthController {
     private OAuth20Service oAuth20Service;
 
     private String api() {
-        return "https://graph.facebook.com/v2.8/me";
+        return "https://graph.facebook.com/v2.8/me?fields=id,name,email,first_name,last_name";
     }
 
     @GetMapping

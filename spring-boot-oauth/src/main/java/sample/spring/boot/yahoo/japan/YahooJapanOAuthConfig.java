@@ -30,7 +30,7 @@ public class YahooJapanOAuthConfig {
                 .callback("http://localhost:8080/oauth/yahoo_japan/callback")
                 .state(this.secretState())
                 .responseType("code")
-                .scope("openid profile")
+                .scope("openid profile email address")
                 .build(YahooJapanConnectApi20.instance());
     }
 
