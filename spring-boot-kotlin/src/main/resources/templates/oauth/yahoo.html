@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="ja" th:replace="component :: head"></head>
+
+<body>
+
+<div th:replace="component :: content(~{::main})">
+  <main>
+    <div class="row">
+      <h4>Yahoo Login</h4>
+    </div>
+
+    <span class="yconnectLogin"></span>
+
+    <script th:inline="javascript">
+    window.yconnectInit = function() {
+        YAHOO.JP.yconnect.Authorization.init({
+            button: {
+                format: "image",
+                type: "a",
+                textType:"a",
+                width: 196,
+                height: 38,
+                className: "yconnectLogin"
+            },
+            authorization: {
+                clientId: "dj0zaiZpPWVkcjBEZ0pHMzNSQyZzPWNvbnN1bWVyc2VjcmV0Jng9Njc-",
+                redirectUri: "http://localhost:8080/yahoo/login/callback",
+                scope: "openid email profile address",
+                state: "hogehoge",
+                nonce: "pen,pineapple,apple,pen",
+                windowWidth: "500",
+                windowHeight: "400"
+            },
+            onError: function(res) {
+                // エラー発生時のコールバック関数
+                console.log('エラー発生', res);
+            },
+            onCancel: function(res) {
+                // 同意キャンセルされた時のコールバック関数
+                console.log('同意キャンセルされた', res);
+            }
+        });
+    };
+    (function(){
+      var fs = document.getElementsByTagName("script")[0], s = document.createElement("script");
+      s.setAttribute("src", "https://s.yimg.jp/images/login/yconnect/auth/1.0.3/auth-min.js");
+      fs.parentNode.insertBefore(s, fs);
+    })();
+    </script>
+
+  </main>
+</div>
+
+</body>
+</html>

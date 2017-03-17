@@ -5,11 +5,13 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+        classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.1.2")
     }
 }
 
@@ -17,13 +19,16 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: "org.flywaydb.flyway"
 
 jar {
     baseName = 'spring-boot-kotlin'
 //    version = '0.0.1-SNAPSHOT'
 }
 
-sourceCompatibility = 1.8
+allprojects {
+    sourceCompatibility = 1.8
+}
 
 repositories {
     mavenCentral()
@@ -43,6 +48,7 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
     compile("mysql:mysql-connector-java:5.1.40")
+    compile 'org.flywaydb:flyway-core:4.1.2'
     compile 'com.atilika.kuromoji:kuromoji-ipadic:0.9.0'
     compile 'com.ibm.icu:icu4j:58.2'
 
@@ -62,4 +68,13 @@ bootRun {
 ext {
     set('thymeleaf.version', '3.0.2.RELEASE')
     set('thymeleaf-layout-dialect.version', '2.1.1')
+}
+
+flyway {
+    url = 'jdbc:mysql://192.168.33.10/sample_db'
+    user = 'sample_user'
+    password = 'sample_user'
+    schemas = ['sample_db']
+    locations = ["classpath:db/migration/mysql"]
+    encoding = 'UTF-8'
 }

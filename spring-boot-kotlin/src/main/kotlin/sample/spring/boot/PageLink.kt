@@ -16,7 +16,9 @@ class PageLink(
     fun pageLinks() = arrayListOf(
             PageLink(path = "/h2-console", text = "h2-console"),
             PageLink(path = "/mobile", text = "mobile", icon = "smartphone"),
-            PageLink(path = "/oauth", text = "oauth", icon = "security"),
+            PageLink(path = "/facebook/login", text = "facebook login", icon = "security"),
+            PageLink(path = "/google/login", text = "google login", icon = "security"),
+            PageLink(path = "/yahoo/login", text = "yahoo login", icon = "security"),
             PageLink(path = "/form/material", text = "form", icon = "input"),
             PageLink(path = "/cms", text = "cms", icon = "web_asset"),
             PageLink(path = "/post", text = "post"),

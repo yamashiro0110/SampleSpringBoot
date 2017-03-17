@@ -1,7 +1,7 @@
-insert into post (post_id, content) values
-(1, 'hogehoge'),
-(2, 'sushi'),
-(3, 'beer');
+insert into post (post_id, content, created, updated) values
+(1, 'hogehoge', now(), now()),
+(2, 'sushi', now(), now()),
+(3, 'beer', now(), now());
 
 LOAD DATA LOCAL INFILE "src/main/resources/data/KEN_ALL-utf8.CSV"
 INTO TABLE zipcode CHARACTER SET utf8mb4

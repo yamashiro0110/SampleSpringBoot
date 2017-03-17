@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS post;
 CREATE TABLE post (
     post_id BIGINT AUTO_INCREMENT NOT NULL,
+    created DATETIME NOT NULL,
+    updated DATETIME NOT NULL,
     content TEXT NOT NULL,
     PRIMARY KEY(post_id)
 );
