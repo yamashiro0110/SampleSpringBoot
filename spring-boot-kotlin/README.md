@@ -42,3 +42,4 @@ flywayValidate - Validate applied migrations against resolved ones (on the files
 - https://fineuploader.com/index.html
 - http://materializecss.com/
 - https://www.tinymce.com/
+- https://flywaydb.org/
