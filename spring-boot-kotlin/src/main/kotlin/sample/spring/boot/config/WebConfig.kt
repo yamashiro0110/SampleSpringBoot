@@ -23,6 +23,9 @@ class WebConfig : WebSecurityConfigurerAdapter() {
         http.authorizeRequests()
                 .anyRequest()
                 .permitAll()
+
+        http.csrf()
+                .ignoringAntMatchers("/file/uploader/ajax")
     }
 
     override fun configure(web: WebSecurity) {
