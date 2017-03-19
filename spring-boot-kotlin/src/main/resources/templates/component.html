@@ -17,8 +17,6 @@
   </head>
 
   <body>
-
-
     <div th:fragment="content(content)">
       <!-- side-bar -->
       <ul id="slide-out" class="side-nav indigo lighten-5" th:fragment="side-nav">
@@ -27,7 +25,6 @@
             <div class="background">
               <!--<img src="images/office.jpg"/>-->
             </div>
-            <!--<a href="#!user"><img class="circle" src="images/yuna.jpg"/></a>-->
             <a href="#!name">
               <span class="name" th:text="${session.userName}">John Doe</span>
             </a>
@@ -46,17 +43,23 @@
 
       <!--navigation bar-->
       <nav class="indigo">
+        <!--dropdown-->
+        <ul id="dropdown1" class="dropdown-content">
+          <li th:each="link : ${@pageLinks}" th:object="${link}">
+            <a th:href="@{*{path}}">
+              [[*{text}]]
+              <i class="material-icons">[[*{icon}]]</i>
+            </a>
+          </li>
+        </ul>
+        <!--navbar-->
         <div class="nav-wrapper">
           <a th:href="@{/}" class="brand-logo">Spring Boot Kotlin</a>
           <a href="#" data-activates="slide-out" class="button-collapse left">
             <i class="material-icons">menu</i>
           </a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down" th:each="link : ${@pageLinks}" th:object="${link}">
-            <li>
-              <a th:href="@{*{path}}">
-                <i class="material-icons">[[*{icon}]]</i>
-              </a>
-            </li>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
         </div>
       </nav>
