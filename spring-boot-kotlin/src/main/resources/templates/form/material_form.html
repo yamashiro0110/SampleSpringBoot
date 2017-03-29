@@ -8,13 +8,22 @@
 <div th:replace="component :: content(~{::main})">
   <main>
     <div class="row">
-      <form class="col s12" th:action="@{/form/material}" th:object="${form}" method="post" enctype="multipart/form-data">
+      <form class="col s12" th:action="@{/form/material}" th:object="${form}" method="post"
+            enctype="multipart/form-data">
         <div class="row"></div>
         <!--name-->
         <div class="row">
           <div class="input-field col s12">
-            <input placeholder="Placeholder" id="name" type="text" class="validate" data-length="30" th:field="*{name}"/>
+            <input placeholder="Placeholder" id="name" type="text" class="validate" data-length="30"
+                   th:field="*{name}"/>
             <label for="name" data-error="wrong" data-success="right">Name</label>
+          </div>
+        </div>
+        <!--error-->
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="error test" id="error-test" type="text" class="validate" data-length="10" value="testtesttest"/>
+            <label for="error-test" data-error="wrong" data-success="right" class="red-text">has error</label>
           </div>
         </div>
         <!--select box-->
@@ -32,7 +41,8 @@
         <!--textarea-->
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea" name="textarea" data-length="300">[[*{textarea}]]</textarea>
+            <textarea id="textarea1" class="materialize-textarea" name="textarea"
+                      data-length="300">[[*{textarea}]]</textarea>
             <label for="textarea1">Textarea</label>
           </div>
         </div>
@@ -119,6 +129,7 @@
 
         $('select').material_select();
       });
+
 
     </script>
   </main>

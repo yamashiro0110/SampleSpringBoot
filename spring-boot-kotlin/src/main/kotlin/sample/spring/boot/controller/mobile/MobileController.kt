@@ -1,4 +1,4 @@
-package sample.spring.boot.controller
+package sample.spring.boot.controller.mobile
 
 import org.springframework.mobile.device.Device
 import org.springframework.stereotype.Controller

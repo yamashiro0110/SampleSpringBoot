@@ -1,4 +1,4 @@
-package sample.spring.boot.controller
+package sample.spring.boot.controller.oauth
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Controller
