@@ -51,6 +51,7 @@ dependencies {
     compile 'org.flywaydb:flyway-core:4.1.2'
     compile 'com.atilika.kuromoji:kuromoji-ipadic:0.9.0'
     compile 'com.ibm.icu:icu4j:58.2'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
 
     runtime('com.h2database:h2')
 
