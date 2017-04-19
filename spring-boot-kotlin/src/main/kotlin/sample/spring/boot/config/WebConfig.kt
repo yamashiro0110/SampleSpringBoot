@@ -25,7 +25,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     fun redisAction() = ConfigureRedisAction.NO_OP
 
     override fun configure(http: HttpSecurity) {
-        http.authorizeRequests().anyRequest().permitAll()
         http.csrf().ignoringAntMatchers("/file/uploader/ajax")
     }
 

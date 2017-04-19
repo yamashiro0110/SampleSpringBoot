@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="ja" th:replace="component :: head"></head>
+
+<body>
+
+<div th:replace="component :: content(~{::main})">
+  <main>
+    <div class="row">
+      <ul class="collection with-header">
+        <li class="collection-header">
+          <h4>contents</h4>
+        </li>
+        <li>
+          <p>success Basic Authentication</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

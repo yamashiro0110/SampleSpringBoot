@@ -15,6 +15,7 @@ class PageLink(val path: String = "",
     fun pageLinks() = arrayListOf(
             PageLink(path = "/h2-console", text = "h2-console"),
             PageLink(path = "/mobile", text = "mobile", icon = "smartphone"),
+            PageLink(path = "/basic/authentication", text = "Basic Authentication", icon = "security"),
             PageLink(path = "/facebook/login", text = "facebook login", icon = "security"),
             PageLink(path = "/google/login", text = "google login", icon = "security"),
             PageLink(path = "/yahoo/login", text = "yahoo login", icon = "security"),
