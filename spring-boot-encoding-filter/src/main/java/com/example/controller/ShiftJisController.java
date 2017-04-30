@@ -25,10 +25,11 @@ public class ShiftJisController {
 
     @PostMapping
     String post(@RequestBody String text) throws IOException {
-        LOGGER.debug("sjis:{}", text);
-
         Charset sjis = Charset.forName("SJIS");
         Charset utf8 = StandardCharsets.UTF_8;
+
+        LOGGER.debug("text:{}", text);
+        LOGGER.debug("utf8.decode:{}", utf8.decode(sjis.encode(text)));
 
         String encodeText = new String(text.getBytes(sjis), utf8);
         LOGGER.debug("utf8:{}", encodeText);
