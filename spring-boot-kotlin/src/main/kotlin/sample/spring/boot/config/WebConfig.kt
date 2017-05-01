@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.session.data.redis.config.ConfigureRedisAction
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession
@@ -18,11 +17,14 @@ val directories = arrayOf("tmp/img/apple", "tmp/img/pineapple")
 val logger = LoggerFactory.getLogger(WebConfig::class.java)
 
 @Configuration
-@EnableWebSecurity
-@EnableRedisHttpSession
-class SecurityConfig : WebSecurityConfigurerAdapter() {
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60)
+class RedisConfig {
     @Bean
     fun redisAction() = ConfigureRedisAction.NO_OP
+}
+
+@Configuration
+class SecurityConfig : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.csrf().ignoringAntMatchers("/file/uploader/ajax")
