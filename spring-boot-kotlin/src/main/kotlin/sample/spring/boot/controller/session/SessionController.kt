@@ -28,6 +28,10 @@ class SessionController {
         model.addAttribute("userInfo", UserInfo(name, email))
         return "session/name"
     }
+
+    @GetMapping("json")
+    @ResponseBody
+    fun userInfo(@ModelAttribute("userInfo") userInfo: UserInfo) = userInfo
 }
 
 data class UserInfo(
