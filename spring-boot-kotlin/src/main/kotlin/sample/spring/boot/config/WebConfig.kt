@@ -1,8 +1,10 @@
 package sample.spring.boot.config
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -21,6 +23,11 @@ val logger = LoggerFactory.getLogger(WebConfig::class.java)
 class RedisConfig {
     @Bean
     fun redisAction() = ConfigureRedisAction.NO_OP
+
+    @Bean("springSessionDefaultRedisSerializer")
+    fun redisSerializer() = GenericJackson2JsonRedisSerializer(this.objectMapper())
+
+    fun objectMapper() = ObjectMapper()
 }
 
 @Configuration
