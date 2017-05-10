@@ -25,7 +25,7 @@ class RedisConfig {
     fun redisAction() = ConfigureRedisAction.NO_OP
 
     @Bean("springSessionDefaultRedisSerializer")
-    fun redisSerializer() = GenericJackson2JsonRedisSerializer()
+    fun redisSerializer() = GenericJackson2JsonRedisSerializer(objectMapper())
 
     fun objectMapper() = ObjectMapper()
 }
