@@ -35,7 +35,7 @@ class SessionController {
 }
 
 data class UserInfo(
-        val name: String = "",
-        val email: String = "",
-        val enable: Boolean = true
+        var name: String = "",
+        var email: String = "",
+        var enable: Boolean = true
 )
