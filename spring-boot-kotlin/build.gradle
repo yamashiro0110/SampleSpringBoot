@@ -1,7 +1,8 @@
 buildscript {
     ext {
         kotlinVersion = '1.1.1'
-        springBootVersion = '1.4.4.RELEASE'
+        springBootVersion = '1.4.6.RELEASE'
+        springSessionVersion = '1.3.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -42,7 +43,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-devtools')
     compile 'org.springframework.mobile:spring-mobile-device:1.1.4.RELEASE'
-    compile('org.springframework.session:spring-session:1.3.0.RELEASE')
+    compile("org.springframework.session:spring-session:${springSessionVersion}")
+    compile("org.springframework.session:spring-session-data-redis:${springSessionVersion}")
 
     compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
@@ -69,6 +71,7 @@ bootRun {
 ext {
     set('thymeleaf.version', '3.0.2.RELEASE')
     set('thymeleaf-layout-dialect.version', '2.1.1')
+    set('spring-security.version', '4.2.0.RELEASE')
 }
 
 flyway {
