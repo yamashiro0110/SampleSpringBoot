@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>spring session data redis</title>
+</head>
+<body>
+<h1>index</h1>
+<hr/>
+
+<ul>
+  <li>
+    <a th:href="@{/session}">form</a>
+  </li>
+</ul>
+
+<hr/>
+<div th:text="${sessionData.data}">session data</div>
+
+</body>
+</html>

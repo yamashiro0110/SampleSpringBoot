@@ -55,6 +55,10 @@ dependencies {
     compile 'com.ibm.icu:icu4j:58.2'
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
 
+    compile('com.fasterxml.jackson.module:jackson-module-parameter-names')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.6')
+
     runtime('com.h2database:h2')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
