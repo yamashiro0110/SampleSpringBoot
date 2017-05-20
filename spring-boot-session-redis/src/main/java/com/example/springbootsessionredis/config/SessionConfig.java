@@ -1,5 +1,7 @@
 package com.example.springbootsessionredis.config;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.BeanClassLoaderAware;
@@ -14,7 +16,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * Created by yamashiro-r on 2017/05/15.
  */
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 10)
 public class SessionConfig implements BeanClassLoaderAware {
 
     private ClassLoader classLoader;
@@ -22,8 +24,8 @@ public class SessionConfig implements BeanClassLoaderAware {
     @Bean("springSessionDefaultRedisSerializer")
     public RedisSerializer<?> redisSerializer() {
         ObjectMapper objectMapper = new ObjectMapper()
-//                .registerModule(new ParameterNamesModule())
-//                .registerModule(new Jdk8Module())
+                .enable(MapperFeature.REQUIRE_SETTERS_FOR_GETTERS)
+                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                 .registerModule(new JavaTimeModule())
                 .registerModules(SecurityJackson2Modules.getModules(this.classLoader));
 

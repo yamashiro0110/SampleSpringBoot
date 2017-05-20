@@ -6,15 +6,33 @@
 <body>
 <h1>index</h1>
 <hr/>
+<div th:text="${sessionData.data}">session data</div>
 
 <form th:object="${sessionData}" th:action="@{/session}" method="post">
+  <hr/>
+  <p>UUID</p>
+  <p><span th:text="*{uuid}"></span></p>
+
+  <hr/>
+  <p>TextList</p>
+  <p th:each="text : *{textList}">
+    <span th:text="${text}">text</span>
+  </p>
+
+  <hr/>
+  <p>Texts</p>
+  <p th:each="text : *{texts()}">
+    <span th:text="${text}">text</span>
+  </p>
+
+  <hr/>
   <p>data</p>
   <p><input type="text" th:field="*{data}"/></p>
+
+  <hr/>
   <p><input type="submit" value="submit"/></p>
 </form>
 
-<hr/>
-<div th:text="${sessionData.data}">session data</div>
 
 <hr/>
 <div>
