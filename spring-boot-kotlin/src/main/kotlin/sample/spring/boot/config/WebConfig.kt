@@ -1,8 +1,8 @@
 package sample.spring.boot.config
 
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.BeanClassLoaderAware
 import org.springframework.context.annotation.Bean
@@ -38,16 +38,9 @@ class RedisConfig: BeanClassLoaderAware {
     fun redisSerializer() = GenericJackson2JsonRedisSerializer(this.objectMapper())
 
     fun objectMapper() = ObjectMapper()
+            .enable(MapperFeature.REQUIRE_SETTERS_FOR_GETTERS)
             .registerModule(JavaTimeModule())
-            .registerModule(ParameterNamesModule())
             .registerModules(SecurityJackson2Modules.getModules(this.classLoader))
-//            .configure(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS, false)
-//            .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
-//            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-//            .configure(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS, false)
-//            .enableDefaultTypingAsProperty(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.Id.NONE.defaultPropertyName)
-//            .enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.EXISTING_PROPERTY)
-
 }
 
 @Configuration
