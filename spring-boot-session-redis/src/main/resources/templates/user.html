@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>spring session data redis</title>
+</head>
+<body>
+<h1>user info</h1>
+<hr/>
+
+<div>
+  <p>userInfo</p>
+  <p th:utext="${userInfo}"></p>
+</div>
+<hr/>
+
+<div>
+  <p>userToken</p>
+  <p th:text="${userToken}"></p>
+</div>
+<hr/>
+
+<div>
+  <ul>
+    <li>
+      <a th:href="@{/}">index</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

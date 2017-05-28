@@ -26,15 +26,19 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile('org.springframework.boot:spring-boot-starter-security')
-    compile('org.springframework.session:spring-session')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-devtools')
+
+    compile('org.springframework.session:spring-session')
     compile("org.springframework.session:spring-session:${springSessionVersion}")
     compile("org.springframework.session:spring-session-data-redis:${springSessionVersion}")
 
     compile('com.fasterxml.jackson.module:jackson-module-parameter-names')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.6')
+
+    compile 'org.apache.commons:commons-lang3:3.4'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

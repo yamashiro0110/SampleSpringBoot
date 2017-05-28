@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by yamashiro-r on 2017/05/15.
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/session")
 @SessionAttributes("sessionData")
 public class SessionController {
 
@@ -19,16 +19,11 @@ public class SessionController {
     }
 
     @GetMapping
-    String index() {
-        return "index";
-    }
-
-    @GetMapping("session")
     String form() {
         return "form";
     }
 
-    @PostMapping("session")
+    @PostMapping
     String post(@ModelAttribute("sessionData") SampleSessionData sessionData, Model model) {
         model.addAttribute("sessionData", sessionData);
         return "form";
