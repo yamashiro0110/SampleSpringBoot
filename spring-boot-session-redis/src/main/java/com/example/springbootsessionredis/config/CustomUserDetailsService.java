@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Created by yamashiro-r on 2017/05/25.
@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        if (!Arrays.asList("admin").contains(username)) {
+        if (!Collections.singletonList("admin").contains(username)) {
             throw new UsernameNotFoundException("invalid username");
         }
 
