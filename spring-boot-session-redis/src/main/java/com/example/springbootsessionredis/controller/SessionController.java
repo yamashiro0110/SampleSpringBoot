@@ -29,4 +29,15 @@ public class SessionController {
         return "form";
     }
 
+    @GetMapping("invalid")
+    @ResponseBody
+    String invalid() {
+        return "invalid session";
+    }
+
+    @GetMapping("error/auth")
+    @ResponseBody
+    String authError() {
+        return "error authentication";
+    }
 }

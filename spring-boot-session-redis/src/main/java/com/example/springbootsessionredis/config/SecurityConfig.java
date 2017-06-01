@@ -28,6 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/session/**", "/login/*", "/auto/login", "/").permitAll()
                 .anyRequest()
                 .authenticated();
+
+        http.sessionManagement()
+                .sessionAuthenticationErrorUrl("/")
+                .invalidSessionUrl("/session");
     }
 
     @Bean
