@@ -16,8 +16,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.formLogin()
+                .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
+                .usernameParameter("username")
                 .permitAll();
 
         http.logout()
@@ -25,13 +27,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/");
 
         http.authorizeRequests()
-                .antMatchers("/session/**", "/login/*", "/auto/login", "/").permitAll()
+                .antMatchers("/session/**",
+                        "/login**",
+                        "/auto/login",
+                        "/h2-console/**",
+                        "/image/**",
+                        "/")
+                .permitAll()
                 .anyRequest()
                 .authenticated();
 
+        http.csrf()
+                .ignoringAntMatchers("/h2-console/**")
+                .disable();
+
         http.sessionManagement()
                 .sessionAuthenticationErrorUrl("/")
-                .invalidSessionUrl("/session");
+                .invalidSessionUrl("/");
     }
 
     @Bean

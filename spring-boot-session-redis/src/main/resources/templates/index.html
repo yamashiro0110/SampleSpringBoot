@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>spring session data redis</title>
-</head>
+<head th:replace="components :: head"></head>
 <body>
-<h1>index</h1>
-<hr/>
 
-<ul>
-  <li>
-    <a th:href="@{/user}">user</a>
-  </li>
-  <li>
-    <a th:href="@{/session}">session</a>
-  </li>
-  <li>
-    <a th:href="@{/auto/login}">auto login</a>
-  </li>
-</ul>
+<div th:replace="components :: contents(content = ~{::main})">
+  <main>
+    <h3>index</h3>
+    <hr/>
+
+    <ul>
+      <li>
+        <a th:href="@{/user}">user</a>
+      </li>
+      <li>
+        <a th:href="@{/session}">session</a>
+      </li>
+      <li>
+        <a th:href="@{/auto/login}">auto login</a>
+      </li>
+    </ul>
+  </main>
+</div>
 
 </body>
 </html>
