@@ -12,5 +12,7 @@ import java.util.List;
 interface SampleTableMapper {
     List<SampleTable> findAll();
 
+    List<SampleTable> findByQuery(@Param("query") String query);
+
     void save(@Param("s") SampleTable sampleTable);
 }

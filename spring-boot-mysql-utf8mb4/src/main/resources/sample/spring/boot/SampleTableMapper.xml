@@ -3,17 +3,45 @@
 <mapper namespace="sample.spring.boot.SampleTableMapper">
     <resultMap id="SampleTable" type="sample.spring.boot.SampleTable">
     </resultMap>
-    <select id="findAll" resultMap="SampleTable">
+
+    <sql id="selectSampleTable">
         select
-        sample_id id,
-        sample_name name,
-        post,
-        created
+            sample_id id,
+            sample_name name,
+            post,
+            created
+    </sql>
+
+    <sql id="fromSampleTable">
         from sample_table
+    </sql>
+
+    <select id="findAll" resultMap="SampleTable">
+        <include refid="selectSampleTable"/>
+        <include refid="fromSampleTable"/>
         order by sample_id desc
     </select>
+
+    <select id="findByQuery" resultMap="SampleTable">
+        <include refid="selectSampleTable"/>
+        <include refid="fromSampleTable"/>
+        <where>
+            <bind name="likeSampleName" value="'%' + query + '%'"/>
+            and sample_name like #{likeSampleName} COLLATE utf8mb4_unicode_ci
+        </where>
+
+    </select>
     <insert id="save">
-        INSERT INTO sample_table (sample_id, sample_name, post, created) VALUES
-        (#{s.id}, #{s.name}, #{s.post}, now())
+        INSERT INTO sample_table (
+            sample_id,
+            sample_name,
+            post,
+            created
+        ) VALUES (
+            #{s.id},
+            #{s.name},
+            #{s.post},
+            now()
+        )
     </insert>
 </mapper>

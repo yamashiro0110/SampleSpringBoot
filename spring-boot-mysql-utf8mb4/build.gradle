@@ -7,7 +7,6 @@ plugins {
 
 ext {
     springBootVersion = "1.4.4.RELEASE"
-//    mysqlConnectorVersion = "6.0.5"
     mysqlConnectorVersion = "5.1.40"
 }
 
