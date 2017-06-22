@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="ja">
+<head lang="ja" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="UTF-8" />
   <title>title</title>
 </head>
@@ -9,16 +9,24 @@
 <div th:fragment="head">
   <meta charset="UTF-8" />
   <title>sample spring session redis</title>
-  <!-- Compiled and minified CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" />
-  <!--<link rel="stylesheet" th:href="@{/css/style.css}" />-->
-  <!-- Compiled and minified JavaScript -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  <!--<script type="text/javascript" th:src="@{/js/app.js}"></script>-->
-  <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="ogpのタイトル" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://yamashiro0110.com/" />
+  <meta property="og:image" content="" />
+  <meta property="og:site_name" content="yamashiro0110" />
+  <meta property="og:description" content="ogpのディスクリプション" />
+
+  <!-- Facebook用設定 -->
+  <meta property="fb:app_id" content="920136291402443" />
+  <!--もしくは-->
+  <!--<meta property="fb:admins" content="adminID（15文字の半角数字）" />-->
+  <!-- ※Twitter共通設定 -->
+  <meta name="twitter:card" content="summary" />
 </div>
 
 <nav th:fragment="navbar">
@@ -56,10 +64,28 @@
   </nav>
 
   <div class="container">
+    <noscript>
+      <div class="row">
+        <div class="col">
+          javascriptが無効です
+        </div>
+      </div>
+    </noscript>
     <div class="row">
       <img th:src="@{/image/ic_visibility_black_24dp_2x.png}" class="materialboxed">
     </div>
     <div th:replace="${content}"></div>
+    <div class="row">
+      <div class="col">
+        <a th:href="@{https://www.facebook.com/sharer/sharer.php(u = 'https://monoka.jp/おすすめ')}" target="_blank">FBでシェア</a>
+      </div>
+      <div class="col">
+        <a th:href="@{https://twitter.com/share(url = 'https://monoka.jp/おすすめ', _text = 'monokaでお得にお買い物')}" target="_blank">Twitterでシェア</a>
+      </div>
+      <div class="col">
+        <a th:href="@{http://line.me/R/msg/text/?monoka monokaでお得にお買い物}" target="_blank">LINEでシェア</a>
+      </div>
+    </div>
   </div>
 
   <script th:inline="javascript">
