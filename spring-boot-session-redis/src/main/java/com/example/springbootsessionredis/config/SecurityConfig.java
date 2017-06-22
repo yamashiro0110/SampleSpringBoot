@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/user")
                 .usernameParameter("username")
                 .permitAll();
 
@@ -42,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable();
 
         http.sessionManagement()
-                .sessionAuthenticationErrorUrl("/")
-                .invalidSessionUrl("/");
+                .sessionAuthenticationErrorUrl("/login")
+                .invalidSessionUrl("/session");
     }
 
     @Bean
