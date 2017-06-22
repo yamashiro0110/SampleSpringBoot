@@ -27,8 +27,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/");
 
         http.authorizeRequests()
-                .antMatchers("/session/**",
+                .antMatchers(
+                        "/session/**",
                         "/login**",
+                        "/health",
+                        "/info",
+                        "/metrics",
+                        "/trace",
                         "/auto/login",
                         "/h2-console/**",
                         "/image/**",
