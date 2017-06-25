@@ -81,13 +81,20 @@
     <div th:replace="${content}"></div>
     <div class="row">
       <div class="col">
-        <a th:href="@{https://www.facebook.com/sharer/sharer.php(u = 'https://monoka.jp/おすすめ')}" target="_blank">FBでシェア</a>
+        <a th:href="@{https://www.facebook.com/sharer/sharer.php(
+            u = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19'
+           )}"
+           target="_blank">FBでシェア</a>
       </div>
       <div class="col">
-        <a th:href="@{https://twitter.com/share(url = 'https://monoka.jp/おすすめ', _text = 'monokaでお得にお買い物')}" target="_blank">Twitterでシェア</a>
+        <a th:href="@{https://twitter.com/share(
+              url = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19',
+              text = 'ThymeleafでSpringTemplateEngineをカスタマイズする'
+            )}"
+           target="_blank">Twitterでシェア</a>
       </div>
       <div class="col">
-        <a th:href="@{http://line.me/R/msg/text/?monoka monokaでお得にお買い物}" target="_blank">LINEでシェア</a>
+        <a th:href="@{http://line.me/R/msg/text/?SpringTemplateEngine Spring Boot + ThymeleafでSpringTemplateEngineをカスタマイズする}" target="_blank">LINEでシェア</a>
       </div>
     </div>
   </div>
