@@ -1,5 +1,6 @@
 package com.example.springbootsessionredis;
 
+import com.example.springbootsessionredis.view.CustomLinkBuilder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
@@ -12,10 +13,7 @@ import java.nio.charset.Charset;
  * Created by yamashiro-r on 2017/06/25.
  */
 public class JsoupTest {
-
-    private String html() {
-        return "";
-    }
+    private final CustomLinkBuilder customLinkBuilder = new CustomLinkBuilder();
 
     @Test
     public void test() throws IOException {
@@ -23,7 +21,7 @@ public class JsoupTest {
         Document document = Jsoup.parse(resource.getFile(), Charset.defaultCharset().name());
 
         document.getElementsByTag("img").forEach(it -> {
-            it.attr("src", "/cdn" + it.attr("src"));
+            it.attr("src", this.customLinkBuilder.buildLink(it.attr("src")));
             System.out.println(it.attr("src"));
         });
 

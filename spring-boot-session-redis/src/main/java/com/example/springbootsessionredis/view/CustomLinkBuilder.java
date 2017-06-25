@@ -37,11 +37,7 @@ public class CustomLinkBuilder extends AbstractLinkBuilder {
         return StringUtils.startsWith(path, "/image/") && this.isImageExtention(path);
     }
 
-    @Override
-    public String buildLink(final IExpressionContext context, final String base, final Map<String, Object> parameters) {
-        String link = this.standardLinkBuilder.buildLink(context, base, parameters);
-        LOGGER.debug("build link:{}", link);
-
+    public String buildLink(String link) {
         if (UrlUtils.isAbsoluteUrl(link)) {
             return link;
         }
@@ -53,5 +49,12 @@ public class CustomLinkBuilder extends AbstractLinkBuilder {
         }
 
         return link;
+    }
+
+    @Override
+    public String buildLink(final IExpressionContext context, final String base, final Map<String, Object> parameters) {
+        String link = this.standardLinkBuilder.buildLink(context, base, parameters);
+        LOGGER.debug("build link:{}", link);
+        return this.buildLink(link);
     }
 }
