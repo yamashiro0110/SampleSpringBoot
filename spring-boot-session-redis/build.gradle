@@ -43,6 +43,7 @@ dependencies {
     compile 'org.projectlombok:lombok:1.+'
     compile 'org.webjars:materializecss:0.96.0'
     compile 'org.webjars:jquery:2.1.4'
+    compile 'org.jsoup:jsoup:1.10.3'
 
     runtime('com.h2database:h2')
 
