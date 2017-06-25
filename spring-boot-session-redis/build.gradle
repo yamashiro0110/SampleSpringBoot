@@ -15,13 +15,12 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-version = '0.0.1-SNAPSHOT'
+//version = '0.1'
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
-
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -54,4 +53,8 @@ ext {
     set('thymeleaf.version', '3.0.2.RELEASE')
     set('thymeleaf-layout-dialect.version', '2.1.1')
     set('spring-security.version', '4.2.0.RELEASE')
+}
+
+springBoot {
+    executable = true
 }

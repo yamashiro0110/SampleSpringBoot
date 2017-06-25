@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/session/**",
                         "/login**",
-                        "/health",
+                        "/health**",
                         "/info",
                         "/metrics",
                         "/trace",
