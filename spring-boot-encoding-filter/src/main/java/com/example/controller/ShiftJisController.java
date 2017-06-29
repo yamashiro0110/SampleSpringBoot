@@ -41,7 +41,7 @@ public class ShiftJisController {
 
         @JsonProperty("text")
         String text() {
-            return this.text;
+            return new String(this.text.getBytes());
         }
 
         @JsonProperty("sjis")
