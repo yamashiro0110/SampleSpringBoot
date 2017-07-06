@@ -26,7 +26,12 @@ public class ShiftJisController {
     @PostMapping("form")
     ResponseAdaptor postForm(@RequestParam("text") String text) {
         ResponseAdaptor adaptor = new ResponseAdaptor(text);
-        LOGGER.debug("post/form sjis:{}, sjis2utf8:{}, utf8:{}, text:{}", adaptor.sjis(), adaptor.sjis2utf8(), adaptor.utf8(), adaptor.text());
+        LOGGER.debug("post/form sjis:{}, sjis2utf8:{}, utf8:{}, text:{}",
+                adaptor.sjis(),
+                adaptor.sjis2utf8(),
+                adaptor.utf8(),
+                adaptor.text());
+
         return adaptor;
     }
 

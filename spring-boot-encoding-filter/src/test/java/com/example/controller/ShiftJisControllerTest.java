@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import okhttp3.*;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +34,7 @@ public class ShiftJisControllerTest {
 
     private RequestBody formBody(String text) {
         return new FormBody.Builder()
-                .add("text", text)
+                .addEncoded("text", text)
                 .build();
     }
 
@@ -45,9 +47,12 @@ public class ShiftJisControllerTest {
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .build();
 
+        RequestBody requestBody = this.requestBody();
+        logger.debug(ReflectionToStringBuilder.toString(requestBody, ToStringStyle.MULTI_LINE_STYLE));
+
         Request request = new Request.Builder()
                 .url("http://localhost:8080/post/body")
-                .post(this.requestBody())
+                .post(requestBody)
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -64,10 +69,15 @@ public class ShiftJisControllerTest {
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .build();
 
+        RequestBody requestBody = this.formBody(text);
+        logger.debug(ReflectionToStringBuilder.toString(requestBody, ToStringStyle.MULTI_LINE_STYLE));
+
         Request request = new Request.Builder()
                 .url("http://localhost:8080/post/form")
-                .post(this.formBody(text))
+                .post(requestBody)
                 .build();
+
+        logger.debug(ReflectionToStringBuilder.toString(request, ToStringStyle.MULTI_LINE_STYLE));
 
         try (Response response = httpClient.newCall(request).execute()) {
             System.out.println(response.body().string());
@@ -79,10 +89,13 @@ public class ShiftJisControllerTest {
     }
 
     @Test
-    public void post() throws Exception {
+    public void testPostBody() throws Exception {
         logger.debug("start postBody");
         this.postBody();
+    }
 
+    @Test
+    public void testPostForm() throws Exception {
         logger.debug("start postForm");
         Charset shiftJis = Charset.forName("Shift_JIS");
         String text = "寿司、ビール";
@@ -117,5 +130,6 @@ public class ShiftJisControllerTest {
         logger.debug("sjis.canEncode:{}", sjis.canEncode());
         logger.debug("sjis.encode:{}", sjis.encode(CharBuffer.wrap("寿司")));
     }
+
 
 }
