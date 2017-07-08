@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.io.IOException;
-import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
@@ -97,8 +96,8 @@ public class ShiftJisControllerTest {
     @Test
     public void testPostForm() throws Exception {
         logger.debug("start postForm");
-        Charset shiftJis = Charset.forName("Shift_JIS");
         String text = "寿司、ビール";
+        Charset shiftJis = Charset.forName("Shift_JIS");
         this.postForm(text);
         this.postForm(new String(text.getBytes(shiftJis)));
         this.postForm(new String(text.getBytes(StandardCharsets.UTF_8), shiftJis));
@@ -113,23 +112,5 @@ public class ShiftJisControllerTest {
                 .accept(org.springframework.http.MediaType.TEXT_PLAIN))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
-    @Test
-    public void writeShiftJis() throws Exception {
-        Charset sjis = Charset.forName("Shift_JIS");
-        String text = "寿司";
-        logger.debug("SJISに変換されない:{}", new String(text.getBytes()));
-        logger.debug("SJISに変換されない:{}", new String(text.getBytes(sjis)));
-        logger.debug("SJISに変換される:{}", new String(text.getBytes(), sjis));
-        logger.debug("SJISに変換される:{}", new String(text.getBytes(StandardCharsets.UTF_8), sjis));
-    }
-
-    @Test
-    public void testCanDecode() {
-        Charset sjis = Charset.forName("Shift_JIS");
-        logger.debug("sjis.canEncode:{}", sjis.canEncode());
-        logger.debug("sjis.encode:{}", sjis.encode(CharBuffer.wrap("寿司")));
-    }
-
 
 }

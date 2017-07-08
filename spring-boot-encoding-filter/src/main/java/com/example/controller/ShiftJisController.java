@@ -19,23 +19,18 @@ public class ShiftJisController {
     @PostMapping("body")
     ResponseAdaptor postBody(@RequestBody String text) {
         ResponseAdaptor adaptor = new ResponseAdaptor(text);
-        LOGGER.debug("post/body sjis:{}, sjis2utf8:{}, utf8:{}, text:{}", adaptor.sjis(), adaptor.sjis2utf8(), adaptor.utf8(), adaptor.text());
+        adaptor.log();
         return adaptor;
     }
 
     @PostMapping("form")
     ResponseAdaptor postForm(@RequestParam("text") String text) {
         ResponseAdaptor adaptor = new ResponseAdaptor(text);
-        LOGGER.debug("post/form sjis:{}, sjis2utf8:{}, utf8:{}, text:{}",
-                adaptor.sjis(),
-                adaptor.sjis2utf8(),
-                adaptor.utf8(),
-                adaptor.text());
-
+        adaptor.log();
         return adaptor;
     }
 
-    static class ResponseAdaptor {
+    public static class ResponseAdaptor {
         private final Charset shiftJis = Charset.forName("Shift_JIS");
         private final Charset utf8 = StandardCharsets.UTF_8;
         private String text = "";
@@ -45,28 +40,50 @@ public class ShiftJisController {
         }
 
         @JsonProperty("text")
-        String text() {
-            return new String(this.text.getBytes());
+        public String text() {
+            return this.text;
         }
 
         @JsonProperty("sjis")
-        String sjis() {
+        public String sjis() {
             return new String(text.getBytes(this.shiftJis));
         }
 
         @JsonProperty("sjis2utf8")
-        String sjis2utf8() {
+        public String sjis2utf8() {
             return new String(text.getBytes(this.shiftJis), this.utf8);
         }
 
         @JsonProperty("utf82sjis")
-        String utf82sjis() {
+        public String utf82sjis() {
             return new String(text.getBytes(this.utf8), this.shiftJis);
         }
 
         @JsonProperty("utf8")
-        String utf8() {
+        public String utf8() {
             return new String(text.getBytes(this.utf8));
+        }
+
+        void log() {
+            LOGGER.debug("sjis:{}", this.sjis());
+            log(this.sjis());
+
+            LOGGER.debug("sjis2utf8:{}", this.sjis2utf8());
+            log(this.sjis2utf8());
+
+            LOGGER.debug("utf8:{}", this.utf8());
+            log(this.utf8());
+
+            LOGGER.debug("text:{}", this.text());
+            log(this.text());
+        }
+
+        void log(String str) {
+            LOGGER.debug("start print character:{}", str);
+
+            for (Character character : str.toCharArray()) {
+                LOGGER.debug("{}, {}", character, Integer.toHexString(character));
+            }
         }
     }
 }

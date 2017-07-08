@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+  <meta charset="shift_jis" />
+  <title>シフトJISでポストするフォーム</title>
+</head>
+<body>
+
+<h1>シフトJISでポストするフォーム</h1>
+<hr/>
+
+<div>
+  <form th:action="@{/form}" method="post" enctype="application/x-www-form-urlencoded" accept-charset="shift_jis">
+    <div>
+      <input type="text" name="text">
+    </div>
+    <div>
+      <input type="submit" value="送信">
+    </div>
+  </form>
+</div>
+
+<div th:if="${showResponse}" th:object="${response}">
+  <p>
+    <span>text</span>
+    <span th:text="*{text()}"></span>
+  </p>
+  <p>
+    <span>sjis</span>
+    <span th:text="*{sjis()}"></span>
+  </p>
+  <p>
+    <span>sjis2utf8</span>
+    <span th:text="*{sjis2utf8()}"></span>
+  </p>
+  <p>
+    <span>utf82sjis</span>
+    <span th:text="*{utf82sjis()}"></span>
+  </p>
+  <p>
+    <span>utf8</span>
+    <span th:text="*{utf8()}"></span>
+  </p>
+</div>
+
+</body>
+</html>

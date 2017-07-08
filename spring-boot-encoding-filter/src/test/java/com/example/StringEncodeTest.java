@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
@@ -48,6 +49,23 @@ public class StringEncodeTest {
         LOGGER.info("sjisEncodeText:{}", sjisEncodeText);
         this.console(sjisEncodeText.getBytes());
         this.writeFile("sjisEncodeText.txt", sjisEncodeText, this.sjis);
+    }
+
+    @Test
+    public void writeShiftJis() throws Exception {
+        Charset sjis = Charset.forName("Shift_JIS");
+        String text = "寿司";
+        LOGGER.debug("SJISに変換されない:{}", new String(text.getBytes()));
+        LOGGER.debug("SJISに変換されない:{}", new String(text.getBytes(sjis)));
+        LOGGER.debug("SJISに変換される:{}", new String(text.getBytes(), sjis));
+        LOGGER.debug("SJISに変換される:{}", new String(text.getBytes(StandardCharsets.UTF_8), sjis));
+    }
+
+    @Test
+    public void testCanDecode() {
+        Charset sjis = Charset.forName("Shift_JIS");
+        LOGGER.debug("sjis.canEncode:{}", sjis.canEncode());
+        LOGGER.debug("sjis.encode:{}", sjis.encode(CharBuffer.wrap("寿司")));
     }
 
 }
