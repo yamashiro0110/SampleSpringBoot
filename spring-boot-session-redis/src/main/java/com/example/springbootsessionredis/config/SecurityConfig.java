@@ -29,8 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(
                         "/session/**",
-                        "/login**",
-                        "/health**",
+                        "/login/**",
+                        "/health/**",
+                        "/exception/**",
                         "/info",
                         "/metrics",
                         "/trace",
