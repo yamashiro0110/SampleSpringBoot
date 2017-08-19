@@ -3,6 +3,7 @@ package com.example.springbootsessionredis.view;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.web.util.UrlUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponents;
@@ -20,6 +21,8 @@ import java.util.Map;
 public class CustomLinkBuilder extends AbstractLinkBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomLinkBuilder.class);
     private final StandardLinkBuilder standardLinkBuilder = new StandardLinkBuilder();
+    @Value("${sample.cdn.enable:false}")
+    private boolean enable;
 
     private String cdnHost() {
         return "http://localhost:8080";
@@ -55,6 +58,6 @@ public class CustomLinkBuilder extends AbstractLinkBuilder {
     public String buildLink(final IExpressionContext context, final String base, final Map<String, Object> parameters) {
         String link = this.standardLinkBuilder.buildLink(context, base, parameters);
         LOGGER.debug("build link:{}", link);
-        return this.buildLink(link);
+        return this.enable ? this.buildLink(link) : link;
     }
 }
