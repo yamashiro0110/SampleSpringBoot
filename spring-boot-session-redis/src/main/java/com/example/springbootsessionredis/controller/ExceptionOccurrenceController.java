@@ -16,4 +16,8 @@ public class ExceptionOccurrenceController {
         throw new IllegalStateException("エラーを発生させます");
     }
 
+    @GetMapping("page")
+    String errorPage() {
+        return "exception";
+    }
 }
