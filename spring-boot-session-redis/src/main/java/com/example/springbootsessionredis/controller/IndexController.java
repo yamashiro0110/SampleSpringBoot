@@ -16,4 +16,8 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("image")
+    String image() {
+        return "image";
+    }
 }

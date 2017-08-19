@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="components :: head"></head>
+
+<body>
+
+<div th:replace="components :: contents(content = ~{::main})">
+  <main>
+    <h3>image</h3>
+
+    <div>
+      <img th:src="@{/image/OK76_marukaburi20141221135231500.jpg}" class="materialboxed"/>
+    </div>
+    <hr/>
+
+  </main>
+</div>
+
+</body>
+</html>
