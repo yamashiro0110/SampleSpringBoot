@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpringCloudClientApplication {
     @Value("${sample.spring.cloud.message}")
     private String message;
+    @Value("${sample.spring.cloud.notFoundMessage:not found msg...}")
+    private String notFoundMessage;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringCloudClientApplication.class, args);
@@ -18,7 +20,7 @@ public class SpringCloudClientApplication {
 
     @GetMapping("/")
     public String index() {
-        return "message is:" + this.message;
+        return "message is:" + this.message + ". notFoundMessage is:" + this.notFoundMessage;
     }
 
 }
