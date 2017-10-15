@@ -24,7 +24,9 @@ public class UserController {
 
     @ModelAttribute("userInfo")
     String userInfo(@AuthenticationPrincipal UserDetails userDetails) throws JsonProcessingException {
-        return this.objectMapper.writeValueAsString(userDetails);
+        return this.objectMapper
+                .writerWithDefaultPrettyPrinter()
+                .writeValueAsString(userDetails);
     }
 
     @ModelAttribute("userToken")
@@ -32,9 +34,14 @@ public class UserController {
         return userToken;
     }
 
-    @GetMapping
+    @GetMapping(path = {"", "default"})
     String user() {
         return "user";
+    }
+
+    @GetMapping("custom")
+    String customLoginUser() {
+        return "custom_login_user";
     }
 
 }

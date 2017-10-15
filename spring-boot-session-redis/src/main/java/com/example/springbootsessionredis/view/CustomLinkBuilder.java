@@ -57,7 +57,7 @@ public class CustomLinkBuilder extends AbstractLinkBuilder {
     @Override
     public String buildLink(final IExpressionContext context, final String base, final Map<String, Object> parameters) {
         String link = this.standardLinkBuilder.buildLink(context, base, parameters);
-        LOGGER.debug("build link:{}", link);
+        LOGGER.trace("build link:{}", link);
         return this.enable ? this.buildLink(link) : link;
     }
 }

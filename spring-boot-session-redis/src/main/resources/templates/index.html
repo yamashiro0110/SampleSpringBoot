@@ -8,17 +8,23 @@
     <h3>index</h3>
     <hr/>
 
-    <ul>
-      <li>
-        <a th:href="@{/user}">user</a>
+    <ul class="collection">
+      <li class="collection-item">
+        <a th:href="@{/user}">user info(default user info)</a>
       </li>
-      <li>
+      <li class="collection-item">
+        <a th:href="@{/user/default}">default user info</a>
+      </li>
+      <li class="collection-item">
+        <a th:href="@{/user/custom}">custom user info</a>
+      </li>
+      <li class="collection-item">
         <a th:href="@{/session}">session</a>
       </li>
-      <li>
+      <li class="collection-item">
         <a th:href="@{/auto/login}">auto login</a>
       </li>
-      <li>
+      <li class="collection-item">
         <a th:href="@{/image}">image</a>
       </li>
     </ul>

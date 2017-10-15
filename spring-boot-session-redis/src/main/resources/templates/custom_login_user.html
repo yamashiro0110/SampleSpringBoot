@@ -7,7 +7,7 @@
 
 <div th:replace="components :: contents(content = ~{::main})">
   <main>
-    <h3>user info</h3>
+    <h3>custom login user info</h3>
 
     <div class="row">
       <p>userInfo</p>
@@ -23,7 +23,6 @@
         <textarea class="materialize-textarea" readonly="readonly" th:text="${userToken}"></textarea>
       </div>
     </div>
-
   </main>
 </div>
 

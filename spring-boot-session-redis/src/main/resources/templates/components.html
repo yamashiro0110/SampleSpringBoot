@@ -52,6 +52,7 @@
       <li><a th:href="@{/info}">info</a></li>
       <li><a th:href="@{/metrics}">metrics</a></li>
       <li><a th:href="@{/trace}">trace</a></li>
+      <li><a th:href="@{/logout}">logout</a></li>
     </ul>
     <!--navbar-->
     <div class="nav-wrapper">
@@ -78,7 +79,10 @@
     <div class="row">
       <img th:src="@{/image/ic_visibility_black_24dp_2x.png}" class="materialboxed">
     </div>
+
     <div th:replace="${content}"></div>
+
+    <div class="divider"></div>
     <div class="row">
       <div class="col">
         <a th:href="@{https://www.facebook.com/sharer/sharer.php(

@@ -16,4 +16,9 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("custom")
+    String customLoginForm() {
+        return "custom_login";
+    }
+
 }
