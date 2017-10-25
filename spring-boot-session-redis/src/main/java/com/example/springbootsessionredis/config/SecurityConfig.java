@@ -1,10 +1,15 @@
 package com.example.springbootsessionredis.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
+
+import javax.annotation.Resource;
 
 /**
  * Created by yamashiro-r on 2017/05/15.
@@ -12,9 +17,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @Configuration
 @Order
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Resource
+    private UserDetailsService userDetailsService;
 
     private String[] publicUrls() {
-        return new String[] {
+        return new String[]{
                 "/session/**",
                 "/login/**",
                 "/health/**",
@@ -57,7 +64,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionAuthenticationErrorUrl("/login")
                 .invalidSessionUrl("/session");
 
+        http.rememberMe()
+                .rememberMeServices(this.springSessionRememberMeServices())
+                .userDetailsService(this.userDetailsService);
+
         http.httpBasic().disable();
+    }
+
+    @Bean
+    SpringSessionRememberMeServices springSessionRememberMeServices() {
+        SpringSessionRememberMeServices springSessionRememberMeServices = new SpringSessionRememberMeServices();
+        springSessionRememberMeServices.setAlwaysRemember(true);
+        return springSessionRememberMeServices;
     }
 
 }
