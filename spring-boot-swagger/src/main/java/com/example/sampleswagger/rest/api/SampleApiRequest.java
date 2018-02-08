@@ -17,17 +17,17 @@ import javax.validation.constraints.Size;
 @Setter
 @ApiModel("サンプルリクエスト")
 public class SampleApiRequest {
-    @ApiModelProperty("ページ")
+    @ApiModelProperty(value = "ページ")
     @Min(1)
     @Max(100)
-    private Integer page;
+    private Integer page = 1;
 
     @ApiModelProperty("サイズ")
     @Min(1)
     @Max(100)
-    private Integer size;
+    private Integer size = 10;
 
     @ApiModelProperty(value = "キーワード", name = "key_word")
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     private String keyWord;
 }

@@ -19,4 +19,6 @@ public class SampleApiResponse {
     private String firstName;
     @ApiModelProperty("姓")
     private String lastName;
+    @ApiModelProperty("キーワード")
+    private String keyWord;
 }
