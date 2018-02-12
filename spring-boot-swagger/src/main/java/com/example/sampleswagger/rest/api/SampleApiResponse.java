@@ -21,4 +21,14 @@ public class SampleApiResponse {
     private String lastName;
     @ApiModelProperty("キーワード")
     private String keyWord;
+    @ApiModelProperty("詳細")
+    private String detail;
+
+    public SampleApiResponse(final Integer age, final Integer money, final String firstName, final String lastName, final String keyWord) {
+        this.age = age;
+        this.money = money;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.keyWord = keyWord;
+    }
 }
