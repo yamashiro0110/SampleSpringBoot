@@ -5,16 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @AllArgsConstructor
 @Getter
 public class ErrorResponse {
     @JsonProperty
-    private String title;
-    @JsonProperty
-    private String detail;
+    private Map<String, Object> error;
 
     public ErrorResponse(HttpStatus httpStatus) {
-        this.title = httpStatus.name();
-        this.detail = httpStatus.getReasonPhrase();
+        this.error = new HashMap<>();
+        this.error.put("code", httpStatus.value());
+        this.error.put("detail", httpStatus.getReasonPhrase());
     }
 }
