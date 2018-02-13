@@ -16,14 +16,6 @@ import java.util.Objects;
 @RequestMapping(path = "/api/sample", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class SampleApiController {
 
-    @ModelAttribute
-    SampleApiRequest bindParameter(
-            @RequestParam("page") Integer page,
-            @RequestParam("size") Integer size,
-            @RequestParam("key_word") String kw) {
-        return new SampleApiRequest(page, size, kw);
-    }
-
     @ApiOperation("sample get public api")
     @GetMapping("public")
     public SampleApiResponse getPublic(@ModelAttribute @Valid SampleApiRequest request) {
@@ -42,10 +34,13 @@ public class SampleApiController {
 
     @ApiOperation("sample get authenticated api")
     @GetMapping("auth")
-    public SampleApiResponse getAuthenticated(@ModelAttribute @Valid SampleApiRequest request) {
+    public SampleApiResponse getAuthenticated(
+            @RequestParam(name = "page", defaultValue = "1", required = false) int page,
+            @RequestParam(name = "size", defaultValue = "1", required = false) int size,
+            @RequestParam(name = "keyword", defaultValue = "", required = false) String keyword) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-        return new SampleApiResponse(30, 35, "get", "sample authenticated api", request.getKeyWord(), loginUser.toString());
+        return new SampleApiResponse(30, 35, "get", "sample authenticated api", keyword, loginUser.toString());
     }
 
     @ApiOperation("sample post authenticated api")
