@@ -1,4 +1,4 @@
-package com.example.sampleswagger;
+package com.example.sampleswagger.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -35,7 +35,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
                 .groupName("public-api")
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/api/sample/public"))
+                .paths(PathSelectors.ant("/api/sample/public/**"))
                 .build()
                 ;
     }
@@ -46,7 +46,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
                 .groupName("authenticated-api")
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/api/sample/auth"))
+                .paths(PathSelectors.ant("/api/sample/auth/**"))
                 .build()
                 .globalOperationParameters(Arrays.asList(this.accessTokenHeaderParameter()))
                 ;
