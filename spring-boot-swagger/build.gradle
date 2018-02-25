@@ -2,6 +2,7 @@ buildscript {
     ext {
         springBootVersion = '1.5.9.RELEASE'
         swaggerVersion = '2.8.0'
+        camelVersion = '2.17.0'
     }
     repositories {
         mavenCentral()
@@ -29,6 +30,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile "org.apache.camel:camel-spring-boot-starter:${camelVersion}"
     compile "io.springfox:springfox-swagger2:${swaggerVersion}"
     compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
     compile "io.springfox:springfox-bean-validators:${swaggerVersion}"
