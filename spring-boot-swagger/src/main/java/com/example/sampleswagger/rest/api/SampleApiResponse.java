@@ -5,10 +5,12 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@ToString
 @ApiModel("サンプルレスポンス")
 public class SampleApiResponse {
     @ApiModelProperty("年齢")
