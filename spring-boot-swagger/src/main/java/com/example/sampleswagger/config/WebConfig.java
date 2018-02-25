@@ -21,8 +21,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     AsyncTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(20);
-        taskExecutor.setMaxPoolSize(20);
-        taskExecutor.setQueueCapacity(30);
         return taskExecutor;
     }
 }
