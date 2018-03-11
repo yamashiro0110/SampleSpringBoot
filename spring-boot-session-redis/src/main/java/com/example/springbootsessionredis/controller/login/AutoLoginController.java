@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.controller;
+package com.example.springbootsessionredis.controller.login;
 
 import com.example.springbootsessionredis.config.security.custom.CustomUser;
 import com.example.springbootsessionredis.config.security.custom.CustomUserDetailsService;

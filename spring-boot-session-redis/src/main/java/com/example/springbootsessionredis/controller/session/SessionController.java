@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.controller;
+package com.example.springbootsessionredis.controller.session;
 
 import com.example.springbootsessionredis.model.SampleSessionData;
 import org.springframework.stereotype.Controller;

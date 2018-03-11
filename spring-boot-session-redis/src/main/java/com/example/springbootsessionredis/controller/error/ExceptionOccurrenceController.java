@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.controller;
+package com.example.springbootsessionredis.controller.error;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

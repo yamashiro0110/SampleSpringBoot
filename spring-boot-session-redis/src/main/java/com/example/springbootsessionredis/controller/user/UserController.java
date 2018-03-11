@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.controller;
+package com.example.springbootsessionredis.controller.user;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
