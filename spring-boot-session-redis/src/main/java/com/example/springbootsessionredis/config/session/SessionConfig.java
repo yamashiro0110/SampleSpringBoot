@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.config;
+package com.example.springbootsessionredis.config.session;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
