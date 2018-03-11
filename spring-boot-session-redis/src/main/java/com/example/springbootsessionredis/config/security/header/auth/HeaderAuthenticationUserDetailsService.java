@@ -30,7 +30,7 @@ public class HeaderAuthenticationUserDetailsService implements AuthenticationUse
 
         return User.withUsername("headerAuthenticatedUser:" + tokenValue)
                 .password(tokenValue)
-                .authorities("USER")
+                .authorities("ROLE_USER")
                 .accountExpired(false)
                 .accountLocked(false)
                 .credentialsExpired(false)
