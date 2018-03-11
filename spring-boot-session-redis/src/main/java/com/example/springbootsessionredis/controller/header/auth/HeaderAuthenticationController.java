@@ -1,7 +1,9 @@
 package com.example.springbootsessionredis.controller.header.auth;
 
 import lombok.*;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,13 +12,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/header/authentication")
 public class HeaderAuthenticationController {
 
     @ModelAttribute("authorizationKey")
-    String authorizationKey(@AuthenticationPrincipal String authorizationKey) {
-        return authorizationKey;
+    String authorizationKey(@AuthenticationPrincipal User authenticatedUser) {
+        return authenticatedUser.getUsername();
     }
 
     @GetMapping
@@ -26,10 +30,12 @@ public class HeaderAuthenticationController {
 
     @PostMapping("confirm")
     String confirm(
-            @ModelAttribute HeaderAuthenticationForm form,
+            @ModelAttribute @Valid HeaderAuthenticationForm form,
             BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("has_error", bindingResult.hasErrors());
+            model.addAttribute("error_msg", bindingResult.getFieldError("value").getDefaultMessage());
             return "header_authentication/index";
         }
 
@@ -48,6 +54,7 @@ public class HeaderAuthenticationController {
     @Setter
     @ToString
     public static class HeaderAuthenticationForm {
+        @NotBlank
         String value;
     }
 

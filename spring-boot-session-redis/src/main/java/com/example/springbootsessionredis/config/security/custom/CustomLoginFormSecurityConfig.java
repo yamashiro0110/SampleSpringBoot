@@ -10,7 +10,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @ConditionalOnProperty(prefix = "security", name = "multipleLogin", havingValue = "true")
-@Order(1)
+@Order(2)
 public class CustomLoginFormSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="components :: head"></head>
+
+<body>
+
+<div th:replace="components :: contents(content = ~{::main})">
+  <main>
+    <h3>header authentication</h3>
+
+    <div class="row">
+      <p>authorizationKey</p>
+      <div class="input-field">
+        <textarea class="materialize-textarea" readonly="readonly" th:text="${authorizationKey}"></textarea>
+      </div>
+    </div>
+
+    <form th:action="@{/header/authentication/confirm}" method="post">
+      <div class="row" th:if="${has_error}">
+        <p th:text="${error_msg}">error_msg</p>
+      </div>
+
+      <div class="row">
+        <p>input value</p>
+        <div class="input-field">
+          <input type="text" name="value" th:value="${value}" maxlength="50" minlength="1"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <input class="btn waves-effect" type="submit" value="confirm"/>
+      </div>
+    </form>
+
+  </main>
+</div>
+
+</body>
+</html>

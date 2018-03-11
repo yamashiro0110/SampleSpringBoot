@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="components :: head"></head>
+
+<body>
+
+<div th:replace="components :: contents(content = ~{::main})">
+  <main>
+    <h3>header authentication</h3>
+
+    <div class="row">
+      <p>authorizationKey</p>
+      <div class="input-field">
+        <textarea class="materialize-textarea" readonly="readonly" th:text="${authorizationKey}"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <p>done</p>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
