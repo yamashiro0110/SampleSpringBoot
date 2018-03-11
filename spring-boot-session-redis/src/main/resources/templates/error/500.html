@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components :: head"></head>
+<body>
+
+<div th:replace="components :: contents(content = ~{::main})">
+  <main>
+    <h3>エラーが発生しました。</h3>
+  </main>
+</div>
+
+</body>
+</html>
