@@ -1,5 +1,6 @@
 package com.example.springbootsessionredis.config.security.header.auth;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -8,13 +9,23 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
 @Configuration
+@ConditionalOnProperty(prefix = "security", name = "headerAuthentication", havingValue = "true")
 @Order(1)
 public class HeaderAuthenticationSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    AuthenticationFailureHandler authenticationFailureHandler() {
+        SimpleUrlAuthenticationFailureHandler authenticationFailureHandler = new SimpleUrlAuthenticationFailureHandler();
+        authenticationFailureHandler.setDefaultFailureUrl("/error/header/authentication");
+        authenticationFailureHandler.setUseForward(true);
+        return authenticationFailureHandler;
+    }
 
     /**
      * RequestHeaderからAuthorizationヘッダを取り出して認証を行うFilter
@@ -30,6 +41,8 @@ public class HeaderAuthenticationSecurityConfig extends WebSecurityConfigurerAda
         filter.setExceptionIfHeaderMissing(false);
         // 認証処理を行う
         filter.setAuthenticationManager(this.authenticationManager());
+        // 認証失敗時のhandler
+//        filter.setAuthenticationFailureHandler(this.authenticationFailureHandler());
         return filter;
     }
 
@@ -64,16 +77,21 @@ public class HeaderAuthenticationSecurityConfig extends WebSecurityConfigurerAda
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.mvcMatcher("/header/authentication")
-                .addFilter(this.preAuthenticationFilter())
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
+                .exceptionHandling()
+                .accessDeniedPage("/error/header/authentication/access_denied")
+                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                .sessionAuthenticationErrorUrl("/")
+                .sessionAuthenticationErrorUrl("/error/header/authentication/session/authentication")
+                .invalidSessionUrl("/error/header/authentication/session/invalid")
                 .and()
                 .csrf()
+                .and()
+                .addFilter(this.preAuthenticationFilter())
         ;
     }
 }

@@ -48,19 +48,6 @@ public class HeaderAuthenticationController {
         return "header_authentication/done";
     }
 
-    @GetMapping("error/invalid_session")
-    String invalidSession(Model model) {
-        model.addAttribute("msg", "invalidSession");
-        return "header_authentication/error";
-    }
-
-    @GetMapping("error/session_authentication_error")
-    String sessionAuthenticationError(Model model) {
-        model.addAttribute("msg", "sessionAuthenticationError");
-        return "header_authentication/error";
-    }
-
-
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter

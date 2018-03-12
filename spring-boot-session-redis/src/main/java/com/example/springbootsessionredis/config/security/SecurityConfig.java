@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private String[] publicUrls() {
         return new String[]{
+                "/error/header/authentication/**",
                 "/session/**",
                 "/login/**",
                 "/health/**",
