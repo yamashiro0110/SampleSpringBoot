@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.config;
+package com.example.springbootsessionredis.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private String[] publicUrls() {
         return new String[]{
+                "/error/header/authentication/**",
                 "/session/**",
                 "/login/**",
                 "/health/**",
@@ -32,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/auto/login",
                 "/h2-console/**",
                 "/image/**",
+                "/favicon.ico",
                 "/",
         };
     }

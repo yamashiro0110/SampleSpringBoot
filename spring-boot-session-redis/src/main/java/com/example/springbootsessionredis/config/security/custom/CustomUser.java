@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.config;
+package com.example.springbootsessionredis.config.security.custom;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

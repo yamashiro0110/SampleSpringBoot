@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.config;
+package com.example.springbootsessionredis.config.security.custom;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
@@ -10,12 +10,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @ConditionalOnProperty(prefix = "security", name = "multipleLogin", havingValue = "true")
-@Order(1)
+@Order(2)
 public class CustomLoginFormSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.antMatcher("/user/custom/**")
+        http.mvcMatcher("/user/custom/**")
                 // authorizeRequests
                 .authorizeRequests()
                 .anyRequest()

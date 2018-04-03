@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.controller;
+package com.example.springbootsessionredis.controller.login;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +14,6 @@ public class LoginController {
     @GetMapping
     String login() {
         return "login";
-    }
-
-    @GetMapping("custom")
-    String customLoginForm() {
-        return "custom_login";
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.springbootsessionredis.config;
+package com.example.springbootsessionredis.config.web;
 
 import com.example.springbootsessionredis.view.CustomLinkBuilder;
 import org.springframework.beans.factory.annotation.Autowired;

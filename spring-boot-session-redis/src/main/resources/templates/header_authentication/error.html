@@ -5,8 +5,7 @@
 
 <div th:replace="components :: contents(content = ~{::main})">
   <main>
-    <h3>エラーが発生しました。</h3>
-    <p th:if="${msg}" th:text="${msg}">msg</p>
+    <h3 th:text="${msg}">error msg</h3>
   </main>
 </div>
 
