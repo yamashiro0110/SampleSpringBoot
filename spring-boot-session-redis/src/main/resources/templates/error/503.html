@@ -5,7 +5,9 @@
 
 <div th:replace="components :: contents(content = ~{::main})">
   <main>
-    <h3>メンテナンス中です。</h3>
+    <h3>メンテナンスエラー</h3>
+    <pre th:if="${maintenance_mode_message}" th:text="${maintenance_mode_message}">メンテナンス中です。</pre>
+    <pre th:unless="${maintenance_mode_message}">メンテナンス中です。</pre>
   </main>
 </div>
 
