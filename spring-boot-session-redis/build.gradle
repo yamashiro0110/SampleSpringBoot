@@ -30,6 +30,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-actuator-docs')
+    compile('org.webjars:hal-browser')
 
     compile('org.springframework.session:spring-session')
     compile("org.springframework.session:spring-session:${springSessionVersion}")
