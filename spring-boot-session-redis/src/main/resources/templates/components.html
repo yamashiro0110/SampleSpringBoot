@@ -76,29 +76,22 @@
         </div>
       </div>
     </noscript>
-    <div class="row">
-      <img th:src="@{/image/ic_visibility_black_24dp_2x.png}" class="materialboxed">
-    </div>
 
     <div th:replace="${content}"></div>
 
     <div class="divider"></div>
     <div class="row">
       <div class="col">
-        <a th:href="@{https://www.facebook.com/sharer/sharer.php(
-            u = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19'
-           )}"
-           target="_blank">FBでシェア</a>
+        <a th:href="@{https://www.facebook.com/sharer/sharer.php(u = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19')}"
+           class="waves-effect waves-teal btn-flat" target="_blank">FBでシェア</a>
       </div>
       <div class="col">
-        <a th:href="@{https://twitter.com/share(
-              url = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19',
-              text = 'ThymeleafでSpringTemplateEngineをカスタマイズする'
-            )}"
-           target="_blank">Twitterでシェア</a>
+        <a th:href="@{https://twitter.com/share(url = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19',text = 'ThymeleafでSpringTemplateEngineをカスタマイズする')}"
+           class="waves-effect waves-teal btn-flat" target="_blank">Twitterでシェア</a>
       </div>
       <div class="col">
-        <a th:href="@{http://line.me/R/msg/text/?SpringTemplateEngine Spring Boot + ThymeleafでSpringTemplateEngineをカスタマイズする}" target="_blank">LINEでシェア</a>
+        <a th:href="@{http://line.me/R/msg/text/?SpringTemplateEngine Spring Boot + ThymeleafでSpringTemplateEngineをカスタマイズする}"
+           class="waves-effect waves-teal btn-flat" target="_blank">LINEでシェア</a>
       </div>
     </div>
   </div>
