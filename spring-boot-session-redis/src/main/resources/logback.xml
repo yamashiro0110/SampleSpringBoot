@@ -3,15 +3,29 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
     <timestamp key="LOG_DATE" datePattern="yyyyMMdd"/>
-    <property name="LOG_FILE" value="logs/application.log" />
+    <!--
+      ログの出力先の設定
+
+      application.propertiesの設定(Spring Environment)が、System Propertyに変換される
+      https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boot-features-custom-log-configuration
+
+      LOG_PATH = logging.path
+      LOG_FILE = logging.file
+
+      FIXME: System Propertyのデフォルト値を設定してない場合にUNDEFINEDになるが、ログはSpring Environmentで設定したファイルに出力されている。
+    -->
+    <property name="APPLICATION_LOG" value="${LOG_PATH:-logs}/${LOG_FILE:-.log}" />
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
             <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
-        <file>${LOG_FILE}</file>
+        <file>${APPLICATION_LOG}</file>
+        <!-- ログローテーションの設定 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_FILE}.%d{yyyyMMdd}</fileNamePattern>
-            <maxHistory>2</maxHistory>
+            <!-- ローテーションしたログをzipで圧縮する -->
+            <fileNamePattern>${APPLICATION_LOG}.%d{yyyyMMdd_HHmm}.tar.gz</fileNamePattern>
+            <!-- ログを保持する世代数 -->
+            <maxHistory>3</maxHistory>
         </rollingPolicy>
     </appender>
 
