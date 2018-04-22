@@ -56,10 +56,19 @@
     </ul>
     <!--navbar-->
     <div class="nav-wrapper">
-      <a th:href="@{/}" class="brand-logo">Sample Spring Session Redis</a>
-      <a href="#" data-activates="slide-out" class="button-collapse left">
-        <i class="material-icons">menu</i>
-      </a>
+      <ul id="slide-out" class="side-nav">
+        <li><a th:href="@{/}">index</a></li>
+        <li><a th:href="@{/login}">login</a></li>
+        <li><a th:href="@{/session}">session</a></li>
+        <li><a th:href="@{/user}">user</a></li>
+        <li><a th:href="@{/health}">health</a></li>
+        <li><a th:href="@{/info}">info</a></li>
+        <li><a th:href="@{/metrics}">metrics</a></li>
+        <li><a th:href="@{/trace}">trace</a></li>
+        <li><a th:href="@{/logout}">logout</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse left"><i class="material-icons">menu</i></a>
+      <a th:href="@{/}" class="brand-logo">header</a>
       <ul class="right hide-on-med-and-down">
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">
           Dropdown<i class="material-icons right">arrow_drop_down</i></a>
@@ -99,6 +108,7 @@
   <script th:inline="javascript">
     $(function() {
       $('.materialboxed').materialbox();
+      $(".button-collapse").sideNav();
     });
   </script>
 </body>
