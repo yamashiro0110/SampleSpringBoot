@@ -56,10 +56,19 @@
     </ul>
     <!--navbar-->
     <div class="nav-wrapper">
-      <a th:href="@{/}" class="brand-logo">Sample Spring Session Redis</a>
-      <a href="#" data-activates="slide-out" class="button-collapse left">
-        <i class="material-icons">menu</i>
-      </a>
+      <ul id="slide-out" class="side-nav">
+        <li><a th:href="@{/}">index</a></li>
+        <li><a th:href="@{/login}">login</a></li>
+        <li><a th:href="@{/session}">session</a></li>
+        <li><a th:href="@{/user}">user</a></li>
+        <li><a th:href="@{/health}">health</a></li>
+        <li><a th:href="@{/info}">info</a></li>
+        <li><a th:href="@{/metrics}">metrics</a></li>
+        <li><a th:href="@{/trace}">trace</a></li>
+        <li><a th:href="@{/logout}">logout</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse left"><i class="material-icons">menu</i></a>
+      <a th:href="@{/}" class="brand-logo">header</a>
       <ul class="right hide-on-med-and-down">
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">
           Dropdown<i class="material-icons right">arrow_drop_down</i></a>
@@ -76,29 +85,22 @@
         </div>
       </div>
     </noscript>
-    <div class="row">
-      <img th:src="@{/image/ic_visibility_black_24dp_2x.png}" class="materialboxed">
-    </div>
 
     <div th:replace="${content}"></div>
 
     <div class="divider"></div>
     <div class="row">
       <div class="col">
-        <a th:href="@{https://www.facebook.com/sharer/sharer.php(
-            u = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19'
-           )}"
-           target="_blank">FBでシェア</a>
+        <a th:href="@{https://www.facebook.com/sharer/sharer.php(u = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19')}"
+           class="waves-effect waves-teal btn-flat" target="_blank">FBでシェア</a>
       </div>
       <div class="col">
-        <a th:href="@{https://twitter.com/share(
-              url = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19',
-              text = 'ThymeleafでSpringTemplateEngineをカスタマイズする'
-            )}"
-           target="_blank">Twitterでシェア</a>
+        <a th:href="@{https://twitter.com/share(url = 'http://qiita.com/RyoTa63292153/items/99530cd68ead2a03fc19',text = 'ThymeleafでSpringTemplateEngineをカスタマイズする')}"
+           class="waves-effect waves-teal btn-flat" target="_blank">Twitterでシェア</a>
       </div>
       <div class="col">
-        <a th:href="@{http://line.me/R/msg/text/?SpringTemplateEngine Spring Boot + ThymeleafでSpringTemplateEngineをカスタマイズする}" target="_blank">LINEでシェア</a>
+        <a th:href="@{http://line.me/R/msg/text/?SpringTemplateEngine Spring Boot + ThymeleafでSpringTemplateEngineをカスタマイズする}"
+           class="waves-effect waves-teal btn-flat" target="_blank">LINEでシェア</a>
       </div>
     </div>
   </div>
@@ -106,6 +108,7 @@
   <script th:inline="javascript">
     $(function() {
       $('.materialboxed').materialbox();
+      $(".button-collapse").sideNav();
     });
   </script>
 </body>

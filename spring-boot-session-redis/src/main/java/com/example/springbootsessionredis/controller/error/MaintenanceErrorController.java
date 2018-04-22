@@ -1,5 +1,6 @@
 package com.example.springbootsessionredis.controller.error;
 
+import com.example.springbootsessionredis.config.web.MaintenanceModeConfig;
 import com.example.springbootsessionredis.filter.MaintenanceModeFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,8 @@ import java.util.Map;
 @RequestMapping("/error")
 @ConditionalOnBean(MaintenanceModeFilter.class)
 public class MaintenanceErrorController {
-    @Resource(name = "maintenanceModeMessage")
-    private String maintenanceModeMessage;
+    @Resource
+    private MaintenanceModeConfig maintenanceModeConfig;
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @RequestMapping(path = "404", produces = MediaType.TEXT_HTML_VALUE)
@@ -36,7 +37,7 @@ public class MaintenanceErrorController {
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @RequestMapping(path = "503", produces = MediaType.TEXT_HTML_VALUE)
     String error503(Model model) {
-        model.addAttribute("maintenance_mode_message", this.maintenanceModeMessage);
+        model.addAttribute("maintenance_mode_message", this.maintenanceModeConfig.getMessage());
         return "error/503";
     }
 
@@ -55,7 +56,7 @@ public class MaintenanceErrorController {
     @RequestMapping(path = "503", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Object> apiError503() {
         HttpStatus httpStatus = HttpStatus.SERVICE_UNAVAILABLE;
-        return new ResponseEntity<>(this.errorMap(httpStatus, this.maintenanceModeMessage), httpStatus);
+        return new ResponseEntity<>(this.errorMap(httpStatus, this.maintenanceModeConfig.getMessage()), httpStatus);
     }
 
     Map<String, Object> errorMap(HttpStatus httpStatus) {
