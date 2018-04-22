@@ -2,7 +2,10 @@ package com.example.springbootsessionredis.config.web;
 
 import com.example.springbootsessionredis.view.CustomLinkBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.boot.web.servlet.ErrorPageRegistrar;
 import org.springframework.context.annotation.Bean;
@@ -37,6 +40,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
+    @ConditionalOnProperty(name = "custom.errorPage.enableErrorPageRegistrar")
     ErrorPageRegistrar errorPageRegistrar() {
         return registry -> registry.addErrorPages(
                 new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"),
@@ -45,4 +49,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         );
     }
 
+    @Bean
+    @ConditionalOnMissingBean(ErrorPageRegistrar.class)
+    EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer() {
+        return container -> container.addErrorPages(
+                new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"),
+                new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500"),
+                new ErrorPage(HttpStatus.SERVICE_UNAVAILABLE, "/error/503")
+        );
+    }
 }
