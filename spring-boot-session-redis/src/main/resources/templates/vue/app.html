@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components :: head"></head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <div th:replace="components :: contents(content = ~{::main})">
+    <main>
+      <div>
+        <div id="vue-app-1" class="row">
+          <div class="col s12">
+            <!-- thymeleafのリテラル置換でVueComponentにmodelで追加した値を渡す -->
+            <vue-app
+              th:v-bind:title="|'${title}'|"
+              th:v-bind:msg="|'${msg}'|"
+            ></vue-app>
+          </div>
+        </div>
+        <div class="row">
+          <!-- th:eachでVueインスタンスを複数生成する -->
+          <div class="col s12" th:each="item, stat : ${items}" th:object="${item}">
+            <div class="row" th:id="|vue-app-thymeleaf-${stat.index}|">
+              <div class="col s12">
+                <span>{{ title }}</span>
+                <input type="text" v-model="title" />
+              </div>
+              <div class="col s12">
+                <span>{{ msg }}</span>
+                <input type="text" v-model="msg" />
+              </div>
+            </div>
+            <script th:inline=javascript type="text/javascript">
+              // FIXME: Vueインスタンスを生成するコードが同じ場合はth:eachの中に含めたくない
+              (function() {
+                var el = /*[[ '#vue-app-thymeleaf-' + ${stat.index} ]]*/ '#hoge';
+                var title = /*[[${item.title}]]*/ 'title';
+                var msg = /*[[${item.msg}]]*/ 'msg';
+
+                var vueApp = new Vue({
+                  el: el,
+                  data: {
+                    title: title,
+                    msg: msg
+                  }
+                });
+              })();
+            </script>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script id="vue-app-template" type="text/x-template">
+    <div class="row">
+      <div class="col s12">
+        {{ title }}
+      </div>
+      <div class="col s12">
+        {{ msg }}
+      </div>
+    </div>
+  </script>
+
+  <script type="text/javascript">
+    Vue.component('vue-app', {
+      template: "#vue-app-template",
+      props: [
+        "title",
+        "msg"
+      ]
+    });
+
+    var vueApp1 = new Vue({
+      el: "#vue-app-1"
+    });
+
+    // 複数のVueインスタンスを生成する場合
+    document.querySelectorAll('.vue-app-2').forEach(function(el, index) {
+      var vueApp2 = new Vue({
+        el: el,
+        data: {
+          title: "",
+          msg: ""
+        }
+      });
+    });
+  </script>
+</body>
+</html>
