@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.BeanClassLoaderAware;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -16,6 +17,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 /**
  * Created by yamashiro-r on 2017/05/15.
  */
+@ConditionalOnProperty(name = "spring.session.store-type", havingValue = "redis")
 @Configuration
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600)
 public class SessionConfig implements BeanClassLoaderAware {

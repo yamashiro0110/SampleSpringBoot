@@ -77,7 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     SpringSessionRememberMeServices springSessionRememberMeServices() {
         SpringSessionRememberMeServices springSessionRememberMeServices = new SpringSessionRememberMeServices();
         springSessionRememberMeServices.setAlwaysRemember(true);
-        springSessionRememberMeServices.setValiditySeconds(30);
+        springSessionRememberMeServices.setValiditySeconds(3600);
         return springSessionRememberMeServices;
     }
 
