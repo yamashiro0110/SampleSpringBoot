@@ -70,6 +70,10 @@ public class MultiDataSourceConfig {
             return sqlSessionFactoryBean.getObject();
         }
 
+        /**
+         * PrimaryのDataSourceではDBの初期化が実行されるが、
+         * そうでない場合は初期化されないため有効にする設定
+         */
         @Bean("pineappleDataSourceInitializer")
         public DataSourceInitializer pineappleDataSourceInitializer() {
             DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
