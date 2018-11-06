@@ -1,0 +1,19 @@
+spring:
+  apple:
+    datasource:
+      url: jdbc:h2:mem:apple
+      username: sa
+      password:
+      driverClassName: org.h2.Driver
+      schema: schema.sql
+      data: data-apple.sql
+      initialization-mode: embedded
+  pineapple:
+    datasource:
+      url: jdbc:h2:mem:pineapple
+      username: sa
+      password:
+      driverClassName: org.h2.Driver
+      schema: schema.sql
+      data: data-pineapple.sql
+      initialization-mode: embedded
