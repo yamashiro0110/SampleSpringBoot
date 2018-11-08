@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('com.h2database:h2:1.4.197')
+    }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "5.2.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-jdbc')
+    implementation('org.flywaydb:flyway-core')
+    runtimeOnly('com.h2database:h2')
+    runtimeOnly('mysql:mysql-connector-java')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+flyway {
+    driver = 'org.h2.Driver'
+    url = 'jdbc:h2:~/testdb'
+    user = 'sa'
+    password = ''
+    locations = ['filesystem:src/main/resources/db/migration', 'filesystem:src/main/resources/db/data']
+}
